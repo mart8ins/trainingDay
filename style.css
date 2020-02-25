@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 960px;
+  margin: 0 auto;
+  background-color: rgba(204, 21, 209, 0.2);
+}
+
+/*************************************************** HEADER AR NAVIGĀCIJU - visām lapām **************************************************** /
+/* header MARTINS TRAINING LOG*/
+#header {
+  background-color: black;
+}
+
+#header h1 {
+  position: relative;
+  font-size: 40px;
+  letter-spacing: 6px;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+
+/* navigācija */
+#navbar {
+  background-color: rgb(135, 225, 79);
+}
+
+#navbar li {
+  display: inline-block;
+  margin-left: 90px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#navbar li a {
+  color: black;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+#navbar li:hover {
+  background-color: rgb(64, 197, 177);
+}
+
+/* aktīvās lapas background krāsa navigācijas pogai */
+#dayOFFnav,
+#mondaynav,
+#wednav,
+#frinav {
+  background-color: green;
+}
+
+
+
+/* *********************************************************** FOOTER ***************************************************************/
+
+/* pirmdienas footer*/
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/*************************************************************** INDEX LAPA ********************************************************/
+
+/* Motviation text lines*/
+.linesContainer {
+  overflow: auto; /* nepieciešams, jo iepriekšējie elementi lapā ir ar display: inline; Tas, lai nepārklātos tie*/
+}
+
+.motivation {
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 300px;
+  height: 200px;
+  float: left;
+  text-align: center;
+  font-size: 40px;
+  background-color: rgb(68, 127, 215);
+  margin: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  text-shadow: 5px 5px 10px blue;
+  border: 5px solid rgba(167, 40, 171, 0.3);
+}
+
+/*   Ievads par mani... fake un īstā bilde   */
+
+.aboutMeContainer {
+  margin-top: 5px;
+  border: 6px solid black;
+  background-color: black;
+}
+.aboutMeNot,
+h4 {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.aboutMeNot {
+  border: 2px solid grey;
+}
+
+/* ************************************************** SĀNU NAVIGĀCIJA VISĀM TRENIŅU DIENĀM *****************************************************/
+
+/* treniņU navigācija, SĀNU JOSLA*/
+.mondaySideNav,
+.wednesdaySideNav,
+.fridaySideNav {
+  height: 750px;
+  width: 240px;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  z-index: 1;
+  font-size: 20px;
+  padding: 15px;
+}
+.mondaySideNav a,
+.wednesdaySideNav a,
+.fridaySideNav a {
+  text-decoration: none;
+  padding: 15px;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 2px;
+  border-bottom: 2px solid white;
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.mondaySideNav a:hover,
+.wednesdaySideNav a:hover,
+.fridaySideNav a:hover {
+  background-color: rgba(86, 100, 107, 0.8);
+}
+
+/**************************************     KONTEINERIS SATURAM VISĀM DIENĀM, BOX BLAKUS NAVIGĀCIJAI   **********************************************/
+
+/* KONTENERA vispārīgais uzstādījums */
+.contentContainerMonday,
+.contentContainerWednesday,
+.contentContainerFriday {
+  margin-left: 240px;
+  width: 720px;
+  height: 750px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* IMAGE uzstādījums*/
+.contentContainerMonday img,
+.contentContainerWednesday img,
+.contentContainerFriday img {
+  width: 80%;
+  height: 300px;
+  position: relative;
+  left: 50px;
+  margin-bottom: 5px;
+}
+
+/* INTRO IMAGE uzstādījums visām treniņu dienām */
+#intro_fons img {
+  width: 100%;
+  height: 100%;
+  left: 0px;
+}
+
+/* VINRINĀJUMU TITLE */
+.contentContainerMonday h2,
+.contentContainerWednesday h2,
+.contentContainerFriday h2 {
+  font-size: 30px;
+  text-transform: uppercase;
+  border-top: 5px solid white;
+  color: white;
+}
+
+/* VINRINĀJUMU  APRAKSTS */
+.contentContainerMonday p,
+.contentContainerWednesday p,
+.contentContainerFriday p {
+  padding: 20px;
+  font-size: 22px;
+  text-align: justify;
+  line-height: 1.5em;
+  color: white;
+  height: 390px;
+  margin-top: 25px;
+  
+}
+
+
+/* *********************
+        animations 
+ ************************/
+
+/* nav button animation*/
+#mondaynav,
+#wednav,
+#frinav {
+  position: relative;
+  animation-name: navTitles;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes navTitles {
+  0% {opacity: 0.2}
+  100% {opacity: 1; border-radius: 0; color: white;}
+}
+
+/* vingrinājumu nosaukumu animācija */
+h2 {
+  position: absolute;
+  animation-name: hea2;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+ 
+}
+
+@keyframes hea2 {
+  0% {left: -700px; opacity: 0; width: 20%}
+  50% {left: -300px; opacity: 0; width: 55%}
+  100% {left: 30px; opacity: 1; width: 91%}
+}
+
+/* training days image animation*/
+.contentContainerMonday img {
+  position: relative;
+  animation-name: img;
+  animation-duration: 2s;
+}
+
+@keyframes img {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+.contentContainerWednesday img {
+  position: relative;
+  animation-name: img;
+  animation-duration: 2s;
+}
+
+@keyframes img {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+.contentContainerFriday img {
+  position: relative;
+  animation-name: img;
+  animation-duration: 2s;
+}
+
+@keyframes img {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
