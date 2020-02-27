@@ -1,153 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Training days</title>
-    <link rel="stylesheet" href="../style.css" />
-  </head>
-  <body>
-    <!--Header sekcija -->
-    <div id="header">
-      <h1>Martins training log</h1>
-      <ul id="navbar">
-        <li><a href="../index.html">Day OFF</a></li>
-        <li id="mondaynav"><a href="monday.html">Monday</a></li>
-        <li><a href="wednesday.html">Wednesday</a></li>
-        <li><a href="friday.html">Friday</a></li>
-      </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Training days</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <!--Header sekcija -->
+  <div id="header">
+    <h1>Martins training log</h1>
+    <p id="monday-open-event">Treniņu progress</p>
+
+
+    <!-- Pop up logs ar progresu -->
+    <div id="monday-pop">
+      <button class="monday-pop-close" id="monday-close-event">X</button>
     </div>
 
-    <!--Sānu navigācija vingrinājumiem-->
-    <div class="mondaySideNav">
-      <a href="#" id="frontSquatsNav">Front squats</a>
-      <a href="#" id="benchPressNav">Bench press</a>
-      <a href="#" id="frontDeltoidRaiseNav">Cable Front Raise</a>
-      <a href="#" id="tricepsRopeNav">Triceps row with rope</a>
-      <a href="#" id="hammerCurlNav">Hammer Curl</a>
-      <a href="#" id="seatedCableRowNav">Seated cable row</a>
-      <a href="#" id="stairMillNav">Stair mill</a>
-      <a href="#" id="treadMillNav">Tread mill</a>
+    <!--Dienu navigācija-->
+    <ul id="navbar">
+      <li><a href="../index.html">Day OFF</a></li>
+      <li id="mondaynav"><a href="monday.html">Monday</a></li>
+      <li><a href="wednesday.html">Wednesday</a></li>
+      <li><a href="friday.html">Friday</a></li>
+    </ul>
+  </div>
+
+
+
+  <!--Sānu navigācija vingrinājumiem-->
+  <div class="mondaySideNav">
+    <a href="#" id="frontSquatsNav">Front squats</a>
+    <a href="#" id="benchPressNav">Bench press</a>
+    <a href="#" id="frontDeltoidRaiseNav">Cable Front Raise</a>
+    <a href="#" id="tricepsRopeNav">Triceps row with rope</a>
+    <a href="#" id="hammerCurlNav">Hammer Curl</a>
+    <a href="#" id="seatedCableRowNav">Seated cable row</a>
+    <a href="#" id="stairMillNav">Stair mill</a>
+    <a href="#" id="treadMillNav">Tread mill</a>
+  </div>
+
+  <!-- **************************************SATURS VINGRINĀJUMI, BOX BLAKĀM NAVIGĀCIJAI *******************************************************-->
+
+  <div class="contentContainerMonday">
+    <!-- sākotnējais fons, kas pazūd pēc tam, kas sāk navigēt pa vingrinājumiem -->
+    <div id="intro_fons">
+      <img src="../image/intro_fons.jpg" alt="Intro bilde" />
     </div>
 
-    <!-- **************************************SATURS VINGRINĀJUMI, BOX BLAKĀM NAVIGĀCIJAI *******************************************************-->
-
-    <div class="contentContainerMonday">
-      <!-- sākotnējais fons, kas pazūd pēc tam, kas sāk navigēt pa vingrinājumiem -->
-      <div id="intro_fons">
-        <img src="../image/intro_fons.jpg" alt="Intro bilde" />
-      </div>
-
-      <!-- front squats -->
-      <div id="frontSquats" class="mondayLoop">
-        <img src="../image/monday/frontSquats.jpg" alt="Front squats" />
-        <h2>Front squats</h2>
-        <p>
-          The Front Squat is a lower-body exercise that will strengthen your
-          legs and hips, particularly your quads (thigh muscles) and glutes
-          (butt muscles). Front Squats are similar to Back Squats, however the
-          barbell is placed across the front side of your shoulders instead of
-          your upper back. This shifts the center of mass forward, which allows
-          for a more upright posture, making it a spine-friendly lift. It also
-          shifts some of the work from your glutes to your quads, making this
-          one of the most effective quad strength and size builders.
-        </p>
-      </div>
-
-      <!-- bench press-->
-      <div id="benchPress" class="mondayLoop">
-        <img src="../image/monday/benchpress.jpg" alt="Bench bress" />
-        <h2>Bench press</h2>
-        <p>
-          The bench press is an upper-body weight training exercise in which the
-          trainee presses a weight upwards while lying on a weight training
-          bench. The exercise uses the pectoralis major, the anterior deltoids,
-          and the triceps, among other stabilizing muscles. A barbell is
-          generally used to hold the weight, but a pair of dumbbells can also be
-          used. The barbell bench press is one of three lifts in the sport of
-          powerlifting alongside the deadlift and squat
-        </p>
-      </div>
-
-      <!-- front deltoid raise-->
-      <div id="frontDeltoidRaise" class="mondayLoop">
-        <img
-          src="../image/monday/frontDeltoidRaise.jpg"
-          alt="Front deltoid raise"
-        />
-        <h2>Standing Rope Cable Front Raise</h2>
-        <p>
-          Stand with the low pulley just behind you, the cable running through
-          your legs. Hold the rope with a neutral (palms facing each other)
-          grip. The technique is the same as the basic exercise. Using two hands
-          will save you a little time, but it puts a lot of strain on the lower
-          back. It is not recommended for people with any problems in that area.
-        </p>
-      </div>
-
-      <!-- front deltoid raise-->
-      <div id="tricepsRope" class="mondayLoop">
-        <img src="../image/monday/triceps_row.jpg" alt="Triceps cables" />
-        <h2>Triceps cable with rope</h2>
-        <p>
-          Strong arms are important for almost every movement of upper body you
-          do in your life for each day, and triceps are often for the heavy
-          elevator. Anytime you push something like a door, a stroller or a
-          barbell, you are using your triceps muscles. Triceps also play a main
-          role in some of the most effective and popular workouts, like the
-          push-up and bench press. Which leads to a better bench, pull-ups, and
-          the final result is all around improved outlook and increase fitness.
-        </p>
-      </div>
-
-      <!--Hammer Curl-->
-      <div id="hammerCurl" class="mondayLoop">
-        <img src="../image/monday/hammerCurl.jpg" alt="Hammer Curl" />
-        <h2>Hammer Curl</h2>
-        <p>
-          In sports—especially anything involving rackets, clubs, paddles, bats,
-          or balls—forearm control is essential, providing both touch and force.
-          LeBron James might have the most impressive biceps and triceps in the
-          NBA, but it’s his forearms that provide the soft touch on his
-          three-point shot and finesse behind his tomahawk dunk. Michael Phelps
-          won 28 Olympic gold medals thanks in part to a freakish 6-foot-7
-          wingspan that’s three inches longer than his height, but his forearms
-          let him pull through water unlike any other swimmer.
-        </p>
-      </div>
-
-      <!--Seated Cable Row-->
-      <div id="seatedCableRow" class="mondayLoop">
-        <img src="../image/monday/seatedCableRow.jpg" alt="Seated cable row" />
-        <h2>Seated cable row</h2>
-        <p>
-          A complete, impressive back has the thickness and not just the width.
-          When training this muscle group, hitting different individual muscles
-          from different angles is crucial. Hitting and emphasizing the traps
-          and lats, seated cable rows can help build back thickness.
-          Additionally, this compound movement can also work the erector spinae,
-          rear deltoids, biceps, biceps brachialis, and forearm flexors.
-        </p>
-      </div>
-
-      <!--Stair mill-->
-      <div id="stairMill" class="mondayLoop">
-        <img src="../image/monday/stairmill.jpg" alt="Stair mill" />
-        <h2>Stair mill</h2>
-        <p>Kāpjam augstu!</p>
-      </div>
-
-      <!--Tread mill-->
-      <div id="treadMill" class="mondayLoop">
-        <img src="../image/monday/treadmill.jpg" alt="Tread mill" />
-        <h2>Tread mill</h2>
-        <p>Ejam!</p>
-      </div>
+    <!-- front squats -->
+    <div id="frontSquats" class="mondayLoop">
+      <img src="../image/monday/frontSquats.jpg" alt="Front squats" />
+      <h2>Front squats</h2>
+      <p>
+        The Front Squat is a lower-body exercise that will strengthen your
+        legs and hips, particularly your quads (thigh muscles) and glutes
+        (butt muscles). Front Squats are similar to Back Squats, however the
+        barbell is placed across the front side of your shoulders instead of
+        your upper back. This shifts the center of mass forward, which allows
+        for a more upright posture, making it a spine-friendly lift. It also
+        shifts some of the work from your glutes to your quads, making this
+        one of the most effective quad strength and size builders.
+      </p>
     </div>
 
-    <footer>2020. gads</footer>
+    <!-- bench press-->
+    <div id="benchPress" class="mondayLoop">
+      <img src="../image/monday/benchpress.jpg" alt="Bench bress" />
+      <h2>Bench press</h2>
+      <p>
+        The bench press is an upper-body weight training exercise in which the
+        trainee presses a weight upwards while lying on a weight training
+        bench. The exercise uses the pectoralis major, the anterior deltoids,
+        and the triceps, among other stabilizing muscles. A barbell is
+        generally used to hold the weight, but a pair of dumbbells can also be
+        used. The barbell bench press is one of three lifts in the sport of
+        powerlifting alongside the deadlift and squat
+      </p>
+    </div>
 
-    <script src="../scripts/scriptMonday.js"></script>
-  </body>
+    <!-- front deltoid raise-->
+    <div id="frontDeltoidRaise" class="mondayLoop">
+      <img src="../image/monday/frontDeltoidRaise.jpg" alt="Front deltoid raise" />
+      <h2>Standing Rope Cable Front Raise</h2>
+      <p>
+        Stand with the low pulley just behind you, the cable running through
+        your legs. Hold the rope with a neutral (palms facing each other)
+        grip. The technique is the same as the basic exercise. Using two hands
+        will save you a little time, but it puts a lot of strain on the lower
+        back. It is not recommended for people with any problems in that area.
+      </p>
+    </div>
+
+    <!-- front deltoid raise-->
+    <div id="tricepsRope" class="mondayLoop">
+      <img src="../image/monday/triceps_row.jpg" alt="Triceps cables" />
+      <h2>Triceps cable with rope</h2>
+      <p>
+        Strong arms are important for almost every movement of upper body you
+        do in your life for each day, and triceps are often for the heavy
+        elevator. Anytime you push something like a door, a stroller or a
+        barbell, you are using your triceps muscles. Triceps also play a main
+        role in some of the most effective and popular workouts, like the
+        push-up and bench press. Which leads to a better bench, pull-ups, and
+        the final result is all around improved outlook and increase fitness.
+      </p>
+    </div>
+
+    <!--Hammer Curl-->
+    <div id="hammerCurl" class="mondayLoop">
+      <img src="../image/monday/hammerCurl.jpg" alt="Hammer Curl" />
+      <h2>Hammer Curl</h2>
+      <p>
+        In sports—especially anything involving rackets, clubs, paddles, bats,
+        or balls—forearm control is essential, providing both touch and force.
+        LeBron James might have the most impressive biceps and triceps in the
+        NBA, but it’s his forearms that provide the soft touch on his
+        three-point shot and finesse behind his tomahawk dunk. Michael Phelps
+        won 28 Olympic gold medals thanks in part to a freakish 6-foot-7
+        wingspan that’s three inches longer than his height, but his forearms
+        let him pull through water unlike any other swimmer.
+      </p>
+    </div>
+
+    <!--Seated Cable Row-->
+    <div id="seatedCableRow" class="mondayLoop">
+      <img src="../image/monday/seatedCableRow.jpg" alt="Seated cable row" />
+      <h2>Seated cable row</h2>
+      <p>
+        A complete, impressive back has the thickness and not just the width.
+        When training this muscle group, hitting different individual muscles
+        from different angles is crucial. Hitting and emphasizing the traps
+        and lats, seated cable rows can help build back thickness.
+        Additionally, this compound movement can also work the erector spinae,
+        rear deltoids, biceps, biceps brachialis, and forearm flexors.
+      </p>
+    </div>
+
+    <!--Stair mill-->
+    <div id="stairMill" class="mondayLoop">
+      <img src="../image/monday/stairmill.jpg" alt="Stair mill" />
+      <h2>Stair mill</h2>
+      <p>Kāpjam augstu!</p>
+    </div>
+
+    <!--Tread mill-->
+    <div id="treadMill" class="mondayLoop">
+      <img src="../image/monday/treadmill.jpg" alt="Tread mill" />
+      <h2>Tread mill</h2>
+      <p>Ejam!</p>
+    </div>
+  </div>
+
+  <footer>2020. gads</footer>
+
+  <script src="../scripts/scriptMonday.js"></script>
+</body>
+
 </html>
