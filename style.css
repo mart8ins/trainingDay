@@ -327,8 +327,8 @@ h2 {
   transform: translateX(-50%);
   float: right;
   color: white;
-  width: 800px;
-  height: 700px;
+  width: 140%;
+  height: 95vh;
   background-color: white;
   z-index: 2;
   border-radius: 5px;
@@ -357,4 +357,8 @@ h2 {
 
 .monday-pop-close:active {
   transform: translateY(2px);
+}
+
+.test {
+  background-color: red;
 }
