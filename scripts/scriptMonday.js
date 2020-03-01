@@ -164,3 +164,6 @@ treadMillNav.addEventListener("click", function () {
     stairMill.style.display = "none";
     treadMill.style.display = "block";
 }, true);
+
+
+/*********************************************** POPUP WINDOW FOR TRAINING PROGRSS **************************************************/
