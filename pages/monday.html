@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Training days</title>
+  <link href="https://fonts.googleapis.com/css?family=Trade+Winds&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Trade+Winds&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css" />
 </head>
 
@@ -17,15 +19,81 @@
 
 
 
+
+
+
+
+
+
+
+
     <!-- **********************************************  POPUP WINDOW FOR TRAINING PROGRSS *************************-->
 
     <!-- BUTTON TO TRAINING POPUP WINDOW-->
     <p id="train-progress-button-m">Treniņu progress</p>
 
 
-    <!--  *********************************************POPUP WINDOW -->
+    <!--  *********************************************       POPUP WINDOW -->
+
+    <!--Input forma -->
     <div id="monday-pop">
-      <div class="test">sdasdadasd</div>
+      <div class="mondayForm">
+        <form action="">
+
+          <!-- 
+            Veiktais vingrinājums
+          -->
+          <input list='vingrinajumi' id="inputving" placeholder="Veiktais vingrinājums">
+          <datalist id='vingrinajumi'>
+            <option value="Front squats">Front squats</option>
+            <option value="Bench press">Bench press</option>
+            <option value="Cable front raise">Cable front raise</option>
+            <option value="Triceps row with rope">Triceps row with rope</option>
+            <option value="Hammer curl">Hammer curl</option>
+            <option value="Seated cable row">Seated cable row</option>
+            <option value="Stair mill">Stair mill</option>
+            <option value="Tread mill">Tread mill</option>
+          </datalist>
+
+
+          <!--
+            Piegājienu skaits
+          -->
+          <label for="sets">Piegājiens</label>
+          <select id="sets">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+            <option value="">4</option>
+            <option value="">5</option>
+            <option value="">6</option>
+          </select>
+
+          <!--
+            Atkārtojumu skaits
+          -->
+          <label for="repet">Atkārtojumi</label>
+          <input type="number" id="repet">
+
+          <!--
+            Veiktā vingrinājuma datums
+          -->
+          <label for="vingrinajumaDatums">Datums</label>
+          <input type="date" id="vingrinajumaDatums">
+
+          <!-- Submit poga-->
+          <input type="submit">
+        </form>
+      </div>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,11 +106,18 @@
 
 
 
+
+
+
+
+
+
+
     <!-- ***************************************************  DAY NAVIGATION *********************** *************************-->
 
     <!-- NAV BAR INTRO-->
     <div class="navbar-intro">
-      <p>Exercises per day</p>
+      <p>Exercises by day</p>
     </div>
 
     <!--Dienu navigācija-->

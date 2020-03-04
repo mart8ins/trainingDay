@@ -11,6 +11,7 @@ body {
   background-image: url(image/main_background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: 'Merriweather', serif;
 }
 
 /*************************************************** HEADER AR NAVIGĀCIJU - visām lapām **************************************************** /
@@ -21,11 +22,13 @@ body {
 }
 
 #header h1 {
-  font-size: 40px;
+  font-size: 30px;
+  font-family: 'Trade Winds';
   letter-spacing: 6px;
   padding: 15px;
   color: white;
   font-weight: bold;
+  width: 500px;
 }
 
 
@@ -297,8 +300,12 @@ h2 {
 
 
 
-/************************************************ MONDAY TRAINING BUTTON WITH POP UP WINDOW *************************************/
-#train-progress-button-m {
+/************************************************ BUTTON WITH POP UP WINDOW *************************************/
+
+                                                        /* styling for all days */
+
+/* button that opens popup window*/
+#train-progress-button-m, #train-progress-button-w, #train-progress-button-f {
   font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -310,32 +317,32 @@ h2 {
   text-align: center;
   position: absolute;
   left: 78%;
-  bottom: 115px;
+  top: 10px;
   border-radius: 3px;
 }
-#train-progress-button-m:hover {
+#train-progress-button-m:hover, #train-progress-button-w:hover, #train-progress-button-f:hover {
   cursor: pointer;
   background-color: white;
 }
 
-/* *********************************************************** POP UP WINDOW*/
-#monday-pop {
+/* POP UP WINDOW*/
+#monday-pop, #wednesday-pop, #friday-pop {
   position: absolute;
   display: none;
   left: 50%;
-  top: 90px;
+  top: 20px;
   transform: translateX(-50%);
   float: right;
   color: white;
   width: 140%;
-  height: 95vh;
+  height: 700px;
   background-color: white;
   z-index: 2;
   border-radius: 5px;
 }
 
-/* ***************************************************** POP UP WINDOW CLOSE BUTTON */
-.monday-pop-close {
+/* POP UP WINDOW CLOSE BUTTON */
+.monday-pop-close, .wednesday-pop-close, .friday-pop-close {
   position: absolute;
   width: 50px;
   left: 97%;
@@ -351,14 +358,67 @@ h2 {
   background-color:rgba(72, 143, 182, 1);
 }
 
-.monday-pop-close:hover {
+
+.monday-pop-close:hover, .wednesday-pop-close:hover, .friday-pop-close:hover {
   cursor: pointer;
 }
 
-.monday-pop-close:active {
+/* close button effect*/
+.monday-pop-close:active, .wednesday-pop-close:active, .friday-pop-close:active {
   transform: translateY(2px);
 }
 
-.test {
-  background-color: red;
+                                                            /* Mondays POP UP styling */
+#monday-pop {
+  background-color: rgba(65, 120, 159, 0.98);
 }
+
+/* form input fields*/
+
+/* form style*/
+.mondayForm {
+  background: black;
+  color: white;
+  padding: 20px;
+}
+
+.mondayForm form {
+  background: rgba(45, 48, 51, 0.8);
+  padding: 10px;
+}
+
+/* Visu label uzstādījumi*/
+.mondayForm label {
+  text-transform: uppercase;
+  padding: 15px;
+  margin-left: 5px;
+  font-size: 22px;
+}
+
+/* Veiktie vingrinājumi input lauks */
+#inputving {
+  font-size: 22px;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  width: 250px;
+}
+
+
+
+
+#sets {
+ font-size: 20px;
+ border-radius: 5px;
+ outline: none;
+}
+
+#repet {
+  font-size: 22px;
+  border-radius: 5px;
+  outline: none;
+  width: 50px;
+  height: 25px;
+}
+
+/* Vingrinājuma datums */
