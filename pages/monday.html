@@ -29,7 +29,7 @@
 
     <!-- **********************************************  POPUP WINDOW FOR TRAINING PROGRSS *************************-->
 
-    <!-- BUTTON TO TRAINING POPUP WINDOW-->
+    <!-- BUTTON what opens TRAINING POPUP WINDOW-->
     <p id="train-progress-button-m">Treniņu progress</p>
 
 
@@ -39,51 +39,98 @@
     <div id="monday-pop">
       <div class="mondayForm">
         <form action="">
-
           <!-- 
             Veiktais vingrinājums
           -->
-          <input list='vingrinajumi' id="inputving" placeholder="Veiktais vingrinājums">
-          <datalist id='vingrinajumi'>
-            <option value="Front squats">Front squats</option>
-            <option value="Bench press">Bench press</option>
-            <option value="Cable front raise">Cable front raise</option>
-            <option value="Triceps row with rope">Triceps row with rope</option>
-            <option value="Hammer curl">Hammer curl</option>
-            <option value="Seated cable row">Seated cable row</option>
-            <option value="Stair mill">Stair mill</option>
-            <option value="Tread mill">Tread mill</option>
-          </datalist>
-
-
-          <!--
-            Piegājienu skaits
-          -->
-          <label for="sets">Piegājiens</label>
-          <select id="sets">
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-            <option value="">6</option>
-          </select>
+          <div class="formInput">
+            <input list='vingrinajumi' id="inputving" placeholder="Vingrinājums">
+            <datalist id='vingrinajumi'>
+              <option value="Front squats">Front squats</option>
+              <option value="Bench press">Bench press</option>
+              <option value="Cable front raise">Cable front raise</option>
+              <option value="Triceps row with rope">Triceps row with rope</option>
+              <option value="Hammer curl">Hammer curl</option>
+              <option value="Seated cable row">Seated cable row</option>
+              <option value="Stair mill">Stair mill</option>
+              <option value="Tread mill">Tread mill</option>
+            </datalist>
+          </div>
 
           <!--
-            Atkārtojumu skaits
+            Set labels
           -->
-          <label for="repet">Atkārtojumi</label>
-          <input type="number" id="repet">
+          <div class="formInput setLabel">
+            <label for="repet">Set 1:</label>
+            <br>
+            <label for="repet">Set 2:</label>
+            <br>
+            <label for="repet">Set 3:</label>
+            <br>
+            <label for="repet">Set 4:</label>
+          </div>
+
+          <!--
+            Svars
+          -->
+
+          <div class="formInput">
+            <!--<label for="repet">Set 1:</label>-->
+            <label for="svars-0">Svars</label>
+            <input type="number" id="svars-0" step="2.5">
+            <br>
+            <label for="svars-1">Svars</label>
+            <input type="number" id="svars-1" step="2.5">
+            <br>
+            <label for="svars-2">Svars</label>
+            <input type="number" id="svars-2" step="2.5">
+            <br>
+            <label for="svars-3">Svars</label>
+            <input type="number" id="svars-3" step="2.5">
+          </div>
+
+          <!--
+            Atkārtojumu skaits konkrētajā piegājienā
+          -->
+          <div class="formInput">
+            <!--<label for="repet">Set 1:</label>-->
+            <label for="rep-0">atkārtojumi</label>
+            <input type="number" id="rep-0">
+            <br>
+            <label for="rep-1">atkārtojumi</label>
+            <input type="number" id="rep-1">
+            <br>
+            <label for="rep-2">atkārtojumi</label>
+            <input type="number" id="rep-2">
+            <br>
+            <label for="rep-3">atkārtojumi</label>
+            <input type="number" id="rep-3">
+          </div>
 
           <!--
             Veiktā vingrinājuma datums
           -->
-          <label for="vingrinajumaDatums">Datums</label>
-          <input type="date" id="vingrinajumaDatums">
+          <div class="formInput datums">
+            <label for="vingrinajumaDatums">Datums</label>
+            <input type="date" id="vingrinajumaDatums">
+            <br>
+          </div>
 
           <!-- Submit poga-->
-          <input type="submit">
+          <div class="formInput poga">
+            <input type="submit">
+          </div>
         </form>
+      </div>
+
+      <!-- Ievadītie treniņi-->
+      <div class="tren">
+
+        <div class="box">
+          <h4>Bench press</h4>
+          <img src="../image/monday/benchpress.jpg" alt="">
+
+        </div>
+
       </div>
 
 

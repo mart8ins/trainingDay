@@ -369,56 +369,119 @@ h2 {
 }
 
                                                             /* Mondays POP UP styling */
+/* Backgrounds visam popup logam*/
 #monday-pop {
   background-color: rgba(65, 120, 159, 0.98);
 }
 
-/* form input fields*/
 
-/* form style*/
+/* ****************
+FORMA HEADING DAĻĀ
+***************** /
+
+
+/* konteineris formai*/
 .mondayForm {
   background: black;
   color: white;
-  padding: 20px;
+  padding: 5px;
 }
 
+/* konteineris visiem inputiem */
+.formInput {
+  display: inline-block;
+}
+
+/* pašas formas uzstādījums*/
 .mondayForm form {
   background: rgba(45, 48, 51, 0.8);
-  padding: 10px;
-}
-
-/* Visu label uzstādījumi*/
-.mondayForm label {
-  text-transform: uppercase;
-  padding: 15px;
-  margin-left: 5px;
-  font-size: 22px;
+  padding: 5px;
+ 
 }
 
 /* Veiktie vingrinājumi input lauks */
 #inputving {
-  font-size: 22px;
+  font-size: 28px;
+  padding: 5px;
   border-radius: 5px;
   outline: none;
   text-align: center;
-  width: 250px;
+  width: 220px;
+  height: 80px;
+  position: relative;
+  bottom: 50px;
+  border: none;
+}
+
+/* Visu label uzstādījumi*/
+.mondayForm label {
+  padding: 15px;
+  margin-left: 3px;
+  font-size: 18px;
+}
+
+/* Set ... label uzstādījums*/
+.setLabel {
+  font-size: 28px;
+  letter-spacing: 3px;;
+  font-weight: bold;
 }
 
 
-
-
-#sets {
- font-size: 20px;
- border-radius: 5px;
- outline: none;
+/* Atkārtojumi un Svars*/
+#rep-0,#rep-1,#rep-2,#rep-3,
+#svars-0,#svars-1,#svars-2,#svars-3 {
+  width: 58px;
+  font-size: 18px;
+  padding: 6px;
 }
 
-#repet {
-  font-size: 22px;
-  border-radius: 5px;
-  outline: none;
-  width: 50px;
-  height: 25px;
+#svars-0,#svars-1,#svars-2,#svars-3 {
+  width: 70px;
 }
 
 /* Vingrinājuma datums */
+.datums {
+  position: relative;
+  bottom: 50px;
+  width: 400px;
+}
+
+/* Submit poga*/
+.poga input {
+  position: absolute;
+  top: 60px;
+  right: 122px;
+  border: none;
+  padding: 15px;
+  font-size: 29px;
+  letter-spacing: 4px;
+  border-radius: 5px;
+  background: rgba(45, 48, 51, 0.8);
+  color: white;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px white;;
+}
+
+.tren {
+  width: 95%;
+  margin: 0 auto;
+  height: 300px;
+  border: 1px solid red;
+}
+
+.box {
+  width: 200px;
+  height: 100%;
+  border: 1px solid green;
+  margin: 5px;
+}
+
+.box h4 {
+  font-size: 14px;
+}
+
+.box img {
+  width: 100%;
+  height: 30%;
+}
