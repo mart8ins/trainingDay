@@ -43,8 +43,7 @@
             Veiktais vingrinājums
           -->
           <div class="formInput">
-            <input list='vingrinajumi' id="inputving" placeholder="Vingrinājums">
-            <datalist id='vingrinajumi'>
+            <select class='vingrinajumuIzvele'>
               <option value="Front squats">Front squats</option>
               <option value="Bench press">Bench press</option>
               <option value="Cable front raise">Cable front raise</option>
@@ -53,20 +52,20 @@
               <option value="Seated cable row">Seated cable row</option>
               <option value="Stair mill">Stair mill</option>
               <option value="Tread mill">Tread mill</option>
-            </datalist>
+            </select>
           </div>
 
           <!--
             Set labels
           -->
           <div class="formInput setLabel">
-            <label for="repet">Set 1:</label>
+            <label for="repet" class='set-0'>Set 1:</label>
             <br>
-            <label for="repet">Set 2:</label>
+            <label for="repet" class='set-1'>Set 2:</label>
             <br>
-            <label for="repet">Set 3:</label>
+            <label for="repet" class='set-3'>Set 3:</label>
             <br>
-            <label for="repet">Set 4:</label>
+            <label for="repet" class='set-4'>Set 4:</label>
           </div>
 
           <!--
@@ -76,16 +75,16 @@
           <div class="formInput">
             <!--<label for="repet">Set 1:</label>-->
             <label for="svars-0">Svars</label>
-            <input type="number" id="svars-0" step="2.5">
+            <input type="number" class="svars-0">
             <br>
             <label for="svars-1">Svars</label>
-            <input type="number" id="svars-1" step="2.5">
+            <input type="number" class="svars-1">
             <br>
             <label for="svars-2">Svars</label>
-            <input type="number" id="svars-2" step="2.5">
+            <input type="number" class="svars-2">
             <br>
             <label for="svars-3">Svars</label>
-            <input type="number" id="svars-3" step="2.5">
+            <input type="number" class="svars-3">
           </div>
 
           <!--
@@ -94,130 +93,44 @@
           <div class="formInput">
             <!--<label for="repet">Set 1:</label>-->
             <label for="rep-0">atkārtojumi</label>
-            <input type="number" id="rep-0">
+            <input type="number" class="rep-0">
             <br>
             <label for="rep-1">atkārtojumi</label>
-            <input type="number" id="rep-1">
+            <input type="number" class="rep-1">
             <br>
             <label for="rep-2">atkārtojumi</label>
-            <input type="number" id="rep-2">
+            <input type="number" class="rep-2">
             <br>
             <label for="rep-3">atkārtojumi</label>
-            <input type="number" id="rep-3">
+            <input type="number" class="rep-3">
           </div>
 
           <!--
             Veiktā vingrinājuma datums
           -->
-          <div class="formInput datums">
+          <div class="formInput datumsVingrinajumam">
             <label for="vingrinajumaDatums">Datums</label>
             <input type="date" id="vingrinajumaDatums">
             <br>
           </div>
 
-          <!-- Submit poga-->
-          <div class="formInput poga">
-            <input type="submit">
-          </div>
         </form>
       </div>
+
+      <div>
+        <button type="submit" class="formPoga">Submit</button>
+      </div>
+
+
 
       <!-- Treniņdienas konteineris visiem konkrētās dienas vingrinājumiem-->
       <div class="day__wrapper">
         <!-- Datums konkrētai treniņu dienai-->
         <div class="new__date">Datums 05.03.2020</div>
 
+
+
         <!-- Vingrinājuma konteineris-->
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
-        <div class="vingrinajuma__box">
-          <h4>Bench press</h4>
-          <img src="../image/monday/benchpress.jpg" alt="">
-          <div class="result__grid">
-            <div class="result__grid_item kg">20kg</div>
-            <div class="result__grid_item rep">10</div>
-            <div class="result__grid_item kg">30kg</div>
-            <div class="result__grid_item rep">8</div>
-            <div class="result__grid_item kg">40kg</div>
-            <div class="result__grid_item rep">6</div>
-            <div class="result__grid_item kg">50kg</div>
-            <div class="result__grid_item rep">4</div>
-          </div>
-        </div>
-
         <div class="vingrinajuma__box">
           <h4>Bench press</h4>
           <img src="../image/monday/benchpress.jpg" alt="">
