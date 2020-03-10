@@ -100,7 +100,7 @@ let UIinput = (function () {
         },
         addItemToDom: function (obj) {
             let html, newHtml;
-            html = `<div class='kas'>
+            html = `<div class="vingrinajuma__box">
             <h4>&vingrinajumi&</h4>
             <img src="../image/monday/benchpress.jpg" alt="">
             <div class="result__grid">
@@ -126,9 +126,7 @@ let UIinput = (function () {
             newHtml = newHtml.replace('&rep2&', obj.rep2);
             newHtml = newHtml.replace('&rep3&', obj.rep3);
 
-
-
-            document.querySelector('.vingrinajuma__box').insertAdjacentHTML('afterbegin', newHtml);
+            document.querySelector('.vingrinajums__new').insertAdjacentHTML('afterbegin', newHtml);
 
 
 

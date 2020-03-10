@@ -477,6 +477,7 @@ PIEVIENOTIE VINGRINĀJUMI
   background: rgba(33, 37, 40, 0.4);
   display: relative;
   overflow: scroll;
+
 }
 
 /* treniņu dienas datums */
@@ -490,14 +491,23 @@ PIEVIENOTIE VINGRINĀJUMI
   width: 95%;
 }
 
+/* placeholder priekš jauna vingrinājums*/
+.vingrinajums__new {
+  
+
+}
+
+/* pats vingrinājums*/
 .vingrinajuma__box {
   width: 198px;
   height: 87%;
   margin-left: 8px;
   margin-top: 30px;
-  position: inline-block;
   background: rgba(33, 37, 40, 0.8);
+  position: relative;
+  display: inline-block;
 }
+
 
 .vingrinajuma__box h4 {
   font-size: 14px;
