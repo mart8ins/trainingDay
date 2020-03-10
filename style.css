@@ -319,6 +319,8 @@ h2 {
   left: 78%;
   top: 10px;
   border-radius: 3px;
+  
+  
 }
 #train-progress-button-m:hover, #train-progress-button-w:hover, #train-progress-button-f:hover {
   cursor: pointer;
@@ -336,7 +338,6 @@ h2 {
   color: white;
   width: 140%;
   height: 900px;
-  background-color: white;
   z-index: 2;
   border-radius: 5px;
 }
@@ -472,7 +473,7 @@ PIEVIENOTIE VINGRINĀJUMI
   width: 95%;
   margin: 0 auto;
   margin-top: 10px;
-  height: 300px;
+  height: 320px;
   background: rgba(33, 37, 40, 0.4);
   display: relative;
   overflow: scroll;
@@ -494,8 +495,7 @@ PIEVIENOTIE VINGRINĀJUMI
   height: 87%;
   margin-left: 8px;
   margin-top: 30px;
-  display: inline-block;
-  position: relative;
+  position: inline-block;
   background: rgba(33, 37, 40, 0.8);
 }
 
