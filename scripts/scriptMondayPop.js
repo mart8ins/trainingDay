@@ -64,6 +64,12 @@ let inputDataController = (function () {
             data.training.push(train);
             return train;
         },
+        getLastDate: function () {
+            let lastDay;
+            lastDay = data.training.slice(-1);
+
+            return lastDay;
+        }
     }
 
 
@@ -96,37 +102,64 @@ let UIinput = (function () {
                 rep3: document.querySelector('.rep-3').value
             }
         },
-        addExerciseToDom: function (obj) { // addExerciseToDom
-            let html, newHtml;
-            html = `<div class="vingrinajuma__box">
-            <h4>&vingrinajumi&</h4>
-            <img src="../image/monday/benchpress.jpg" alt="">
-            <div class="result__grid">
-              <div class="result__grid_item kg">&svars0& kg</div>
-              <div class="result__grid_item rep">&rep0&x</div>
-              <div class="result__grid_item kg">&svars1& kg</div>
-              <div class="result__grid_item rep">&rep1&x</div>
-              <div class="result__grid_item kg">&svars2& kg</div>
-              <div class="result__grid_item rep">&rep2&x</div>
-              <div class="result__grid_item kg">&svars3& kg</div>
-              <div class="result__grid_item rep">&rep3&x</div>
-          </div>
-          </div>`;
+        addExerciseToDom: function (obj, newDate, lastDate) { // addExerciseToDom
+            let htmlFull, newHtmlFull, htmlTrain;
 
-            newHtml = html.replace('&vingrinajumi&', obj.exercise);
-            newHtml = newHtml.replace('&svars0&', obj.svars0);
-            newHtml = newHtml.replace('&svars1&', obj.svars1);
-            newHtml = newHtml.replace('&svars2&', obj.svars2);
-            newHtml = newHtml.replace('&svars3&', obj.svars3);
+            // Ja tiek pievienots jauns datums, vingrinājumi tiks grupēti jaunā konteinerī
+            // vingrinājumi tiks grupēti esošā/konkrētā konteinera ietvaros
+            htmlFull = `<div id="day__wrapper">
+           <div class="new__date">Datums %datums%</div>
+           <div class='vingrinajums__new'>
+             <div class="vingrinajuma__box">
+               <h4>&vingrinajumi&</h4>
+               <img src="../image/monday/benchpress.jpg" alt="">
+               <div class="result__grid">
+                 <div class="result__grid_item kg">&svars0& kg</div>
+                 <div class="result__grid_item rep">&rep0&x</div>
+                 <div class="result__grid_item kg">&svars1& kg</div>
+                 <div class="result__grid_item rep">&rep1&x</div>
+                 <div class="result__grid_item kg">&svars2& kg</div>
+                 <div class="result__grid_item rep">&rep2&x</div>
+                 <div class="result__grid_item kg">&svars3& kg</div>
+                 <div class="result__grid_item rep">&rep3&x</div>
+               </div>
+             </div>
+           </div>
+         </div>`;
 
-            newHtml = newHtml.replace('&rep0&', obj.rep0);
-            newHtml = newHtml.replace('&rep1&', obj.rep1);
-            newHtml = newHtml.replace('&rep2&', obj.rep2);
-            newHtml = newHtml.replace('&rep3&', obj.rep3);
+            htmlTrain = `<div class='vingrinajums__new'>
+         <div class="vingrinajuma__box">
+           <h4>&vingrinajumi&</h4>
+           <img src="../image/monday/benchpress.jpg" alt="">
+           <div class="result__grid">
+             <div class="result__grid_item kg">&svars0& kg</div>
+             <div class="result__grid_item rep">&rep0&x</div>
+             <div class="result__grid_item kg">&svars1& kg</div>
+             <div class="result__grid_item rep">&rep1&x</div>
+             <div class="result__grid_item kg">&svars2& kg</div>
+             <div class="result__grid_item rep">&rep2&x</div>
+             <div class="result__grid_item kg">&svars3& kg</div>
+             <div class="result__grid_item rep">&rep3&x</div>
+           </div>
+         </div>`;
 
-            document.querySelector('.vingrinajums__new').insertAdjacentHTML('afterbegin', newHtml);
+            newHtmlFull = htmlFull.replace('&vingrinajumi&', obj.exercise);
+            newHtmlFull = newHtmlFull.replace('%datums%', obj.date)
+            newHtmlFull = newHtmlFull.replace('&svars0&', obj.svars0);
+            newHtmlFull = newHtmlFull.replace('&svars1&', obj.svars1);
+            newHtmlFull = newHtmlFull.replace('&svars2&', obj.svars2);
+            newHtmlFull = newHtmlFull.replace('&svars3&', obj.svars3);
+
+            newHtmlFull = newHtmlFull.replace('&rep0&', obj.rep0);
+            newHtmlFull = newHtmlFull.replace('&rep1&', obj.rep1);
+            newHtmlFull = newHtmlFull.replace('&rep2&', obj.rep2);
+            newHtmlFull = newHtmlFull.replace('&rep3&', obj.rep3);
+
+
+            document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
+
+
         }
-
     }
 })();
 
@@ -136,14 +169,20 @@ let UIinput = (function () {
 let controller = (function (dataCtrl, UI) {
 
     let addItem = function () {
-        let input, newItem;
+        let input, newItem, lastDate;
         // storing user input data
         input = UI.inputData();
+
+        lastDate = dataCtrl.getLastDate();
+
+        // creating data object and storing it to array
         newItem = dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
-        UI.addExerciseToDom(newItem);
+        // adding object tu DOM
+        UI.addExerciseToDom(newItem, input.datums, lastDate.date);
 
-        console.log(newItem);
+        console.log(lastDate);
+
 
     };
 

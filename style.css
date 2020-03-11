@@ -478,7 +478,7 @@ PIEVIENOTIE VINGRINĀJUMI
 ************************ /
 
 /* konteineris konkrētai dienai, visiem vingrinājumiem */
-.day__wrapper {
+#day__wrapper {
   width: 95%;
   margin: 0 auto;
   margin-top: 10px;
@@ -486,7 +486,14 @@ PIEVIENOTIE VINGRINĀJUMI
   background: rgba(33, 37, 40, 0.4);
   display: relative;
   overflow: auto;
+}
 
+.showWrapper {
+  display: block;
+}
+
+.hideWrapper {
+  display: none;
 }
 
 /* treniņu dienas datums */
@@ -501,8 +508,7 @@ PIEVIENOTIE VINGRINĀJUMI
 }
 
 /* placeholder priekš jauna vingrinājums*/
-.vingrinajums__new {
-}
+
 
 /* pats vingrinājums*/
 .vingrinajuma__box {
