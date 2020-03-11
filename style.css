@@ -340,23 +340,32 @@ h2 {
   height: 900px;
   z-index: 2;
   border-radius: 5px;
+  animation: letSee 0.2s ease-in-out;
+  overflow: auto;
+}
+
+@keyframes letSee {
+  0% {opacity: 0;}
+  100% {opacity: 1}
 }
 
 /* POP UP WINDOW CLOSE BUTTON */
 .monday-pop-close, .wednesday-pop-close, .friday-pop-close {
   position: absolute;
-  width: 50px;
-  left: 97%;
-  top: -15px;
-  z-index: 2;
-  font-size: 27px;
+  width: 70px;
+  left: 92%;
+  z-index: 3;
+  top: 9px;
+  font-size: 17px;
   font-weight: 400;
-  padding: 10px;
-  border: none;
-  border-radius: 45%;
+  padding: 5px;
+  border-radius: 20%;
   outline: none;
+  background: rgba(45, 48, 51, 0.8);
   color: white;
-  background-color:rgba(72, 143, 182, 1);
+  cursor: pointer;
+  box-shadow: 3px 3px 5px white;
+  letter-spacing: 2px;
 }
 
 
@@ -476,7 +485,7 @@ PIEVIENOTIE VINGRINĀJUMI
   height: 320px;
   background: rgba(33, 37, 40, 0.4);
   display: relative;
-  overflow: scroll;
+  overflow: auto;
 
 }
 
@@ -493,8 +502,6 @@ PIEVIENOTIE VINGRINĀJUMI
 
 /* placeholder priekš jauna vingrinājums*/
 .vingrinajums__new {
-  
-
 }
 
 /* pats vingrinājums*/

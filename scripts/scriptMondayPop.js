@@ -36,7 +36,7 @@ let sumbitButton = (function () {
 
 let inputDataController = (function () {
 
-
+    // object constructor for data
     let Exercise = function (date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3) {
         this.date = date;
         this.exercise = exercise;
@@ -51,10 +51,11 @@ let inputDataController = (function () {
         this.rep3 = rep3;
     }
 
-    // place where to store new training day
+    // place where to store object
     let data = {
         training: []
     };
+
 
     return {
         addTrainDay: function (date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3) {
@@ -63,9 +64,6 @@ let inputDataController = (function () {
             data.training.push(train);
             return train;
         },
-        testing: function () {
-            console.log(data.training);
-        }
     }
 
 
@@ -98,7 +96,7 @@ let UIinput = (function () {
                 rep3: document.querySelector('.rep-3').value
             }
         },
-        addItemToDom: function (obj) {
+        addExerciseToDom: function (obj) { // addExerciseToDom
             let html, newHtml;
             html = `<div class="vingrinajuma__box">
             <h4>&vingrinajumi&</h4>
@@ -127,10 +125,8 @@ let UIinput = (function () {
             newHtml = newHtml.replace('&rep3&', obj.rep3);
 
             document.querySelector('.vingrinajums__new').insertAdjacentHTML('afterbegin', newHtml);
-
-
-
         }
+
     }
 })();
 
@@ -145,7 +141,7 @@ let controller = (function (dataCtrl, UI) {
         input = UI.inputData();
         newItem = dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
-        UI.addItemToDom(newItem);
+        UI.addExerciseToDom(newItem);
 
         console.log(newItem);
 
