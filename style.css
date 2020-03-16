@@ -380,7 +380,7 @@ h2 {
 
                                                             /* Mondays POP UP styling */
 /* Backgrounds visam popup logam*/
-#monday-pop {
+#monday-pop, #wednesday-pop, #friday-pop {
   background-color: rgba(65, 120, 159, 0.98);
 }
 

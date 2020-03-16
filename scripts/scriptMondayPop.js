@@ -52,26 +52,23 @@ let inputDataController = (function () {
     }
 
     // place where to store object
-    let data = {
-        training: []
-    };
+    let training = [];
 
 
     return {
         addTrainDay: function (date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3) {
             let train;
             train = new Exercise(date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3);
-            data.training.push(train);
+            training.push(train);
+
             return train;
+
         },
         getLastDate: function () {
-            let lastDay;
-            lastDay = data.training.slice(-1);
+            let lastDay, lastDate, lastStrings, diena;
 
-            return lastDay;
         }
     }
-
 
 
 })();
@@ -102,47 +99,30 @@ let UIinput = (function () {
                 rep3: document.querySelector('.rep-3').value
             }
         },
-        addExerciseToDom: function (obj, newDate, lastDate) { // addExerciseToDom
+        addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
             let htmlFull, newHtmlFull, htmlTrain;
 
             // Ja tiek pievienots jauns datums, vingrinājumi tiks grupēti jaunā konteinerī
             // vingrinājumi tiks grupēti esošā/konkrētā konteinera ietvaros
             htmlFull = `<div id="day__wrapper">
-           <div class="new__date">Datums %datums%</div>
-           <div class='vingrinajums__new'>
-             <div class="vingrinajuma__box">
-               <h4>&vingrinajumi&</h4>
-               <img src="../image/monday/benchpress.jpg" alt="">
-               <div class="result__grid">
-                 <div class="result__grid_item kg">&svars0& kg</div>
-                 <div class="result__grid_item rep">&rep0&x</div>
-                 <div class="result__grid_item kg">&svars1& kg</div>
-                 <div class="result__grid_item rep">&rep1&x</div>
-                 <div class="result__grid_item kg">&svars2& kg</div>
-                 <div class="result__grid_item rep">&rep2&x</div>
-                 <div class="result__grid_item kg">&svars3& kg</div>
-                 <div class="result__grid_item rep">&rep3&x</div>
-               </div>
-             </div>
-           </div>
-         </div>`;
-
-            htmlTrain = `<div class='vingrinajums__new'>
-         <div class="vingrinajuma__box">
-           <h4>&vingrinajumi&</h4>
-           <img src="../image/monday/benchpress.jpg" alt="">
-           <div class="result__grid">
-             <div class="result__grid_item kg">&svars0& kg</div>
-             <div class="result__grid_item rep">&rep0&x</div>
-             <div class="result__grid_item kg">&svars1& kg</div>
-             <div class="result__grid_item rep">&rep1&x</div>
-             <div class="result__grid_item kg">&svars2& kg</div>
-             <div class="result__grid_item rep">&rep2&x</div>
-             <div class="result__grid_item kg">&svars3& kg</div>
-             <div class="result__grid_item rep">&rep3&x</div>
-           </div>
-         </div>`;
-
+                <div class="new__date">Datums %datums%</div>
+                <div class='vingrinajums__new'>
+                  <div class="vingrinajuma__box">
+                    <h4>&vingrinajumi&</h4>
+                    <img src="../image/monday/benchpress.jpg" alt="">
+                    <div class="result__grid">
+                      <div class="result__grid_item kg">&svars0& kg</div>
+                      <div class="result__grid_item rep">&rep0&x</div>
+                      <div class="result__grid_item kg">&svars1& kg</div>
+                      <div class="result__grid_item rep">&rep1&x</div>
+                      <div class="result__grid_item kg">&svars2& kg</div>
+                      <div class="result__grid_item rep">&rep2&x</div>
+                      <div class="result__grid_item kg">&svars3& kg</div>
+                      <div class="result__grid_item rep">&rep3&x</div>
+                    </div>
+                  </div>
+                </div>
+              </div>`;
             newHtmlFull = htmlFull.replace('&vingrinajumi&', obj.exercise);
             newHtmlFull = newHtmlFull.replace('%datums%', obj.date)
             newHtmlFull = newHtmlFull.replace('&svars0&', obj.svars0);
@@ -159,6 +139,24 @@ let UIinput = (function () {
             document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
 
 
+
+
+            /*
+                        htmlTrain = `<div class='vingrinajums__new'>
+                     <div class="vingrinajuma__box">
+                       <h4>&vingrinajumi&</h4>
+                       <img src="../image/monday/benchpress.jpg" alt="">
+                       <div class="result__grid">
+                         <div class="result__grid_item kg">&svars0& kg</div>
+                         <div class="result__grid_item rep">&rep0&x</div>
+                         <div class="result__grid_item kg">&svars1& kg</div>
+                         <div class="result__grid_item rep">&rep1&x</div>
+                         <div class="result__grid_item kg">&svars2& kg</div>
+                         <div class="result__grid_item rep">&rep2&x</div>
+                         <div class="result__grid_item kg">&svars3& kg</div>
+                         <div class="result__grid_item rep">&rep3&x</div>
+                       </div>
+                     </div>`;*/
         }
     }
 })();
@@ -179,9 +177,9 @@ let controller = (function (dataCtrl, UI) {
         newItem = dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
         // adding object tu DOM
-        UI.addExerciseToDom(newItem, input.datums, lastDate.date);
+        UI.addExerciseToDom(newItem);
 
-        console.log(lastDate);
+        // console.log(lastDate);
 
 
     };
