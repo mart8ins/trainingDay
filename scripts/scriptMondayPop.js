@@ -90,11 +90,12 @@ let UIinput = (function () {
                 rep3: document.querySelector('.rep-3').value
             }
         },
-        addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
-            let htmlFull, newHtmlFull, htmlTrain;
 
-            // Ja tiek pievienots jauns datums, vingrinājumi tiks grupēti jaunā konteinerī
-            // vingrinājumi tiks grupēti esošā/konkrētā konteinera ietvaros
+
+        addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
+            let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain;
+
+            // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
                 <div class="new__date">Datums %datums%</div>
                 <div class='vingrinajums__new'>
@@ -114,26 +115,9 @@ let UIinput = (function () {
                   </div>
                 </div>
               </div>`;
-            newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
-            newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
-            newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
-            newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
-            newHtmlFull = newHtmlFull.replace('&svars2&', obj[4]);
-            newHtmlFull = newHtmlFull.replace('&svars3&', obj[5]);
 
-            newHtmlFull = newHtmlFull.replace('&rep0&', obj[5]);
-            newHtmlFull = newHtmlFull.replace('&rep1&', obj[6]);
-            newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
-            newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
-
-
-            document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
-
-
-
-
-            /*
-                        htmlTrain = `<div class='vingrinajums__new'>
+            // vingrinājuma konteineris
+            htmlTrain = `<div class='vingrinajums__new'>
                      <div class="vingrinajuma__box">
                        <h4>&vingrinajumi&</h4>
                        <img src="../image/monday/benchpress.jpg" alt="">
@@ -147,7 +131,38 @@ let UIinput = (function () {
                          <div class="result__grid_item kg">&svars3& kg</div>
                          <div class="result__grid_item rep">&rep3&x</div>
                        </div>
-                     </div>`;*/
+                     </div>`;
+
+            if (obj[0] !== lastDate) {
+                newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
+                newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
+                newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
+                newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
+                newHtmlFull = newHtmlFull.replace('&svars2&', obj[4]);
+                newHtmlFull = newHtmlFull.replace('&svars3&', obj[5]);
+
+                newHtmlFull = newHtmlFull.replace('&rep0&', obj[5]);
+                newHtmlFull = newHtmlFull.replace('&rep1&', obj[6]);
+                newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
+                newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
+
+
+                document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
+            } else {
+                newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[1]);
+                //newHtmlTrain = newHtmlTrain.replace('%datums%', obj[0])
+                newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[2]);
+                newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[3]);
+                newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[4]);
+                newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[5]);
+
+                newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[5]);
+                newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[6]);
+                newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[7]);
+                newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[8]);
+
+                document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
+            }
         }
     }
 })();
@@ -174,7 +189,7 @@ let controller = (function (dataCtrl, UI) {
         console.log(newItem);
 
         // adding last days training data to the DOM
-        UI.addExerciseToDom(newItem);
+        UI.addExerciseToDom(newItem, lastDate);
 
 
 

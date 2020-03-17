@@ -484,8 +484,11 @@ PIEVIENOTIE VINGRINĀJUMI
   margin-top: 10px;
   height: 320px;
   background: rgba(33, 37, 40, 0.4);
-  display: relative;
   overflow: auto;
+}
+
+.vingrinajums__new {
+  display: inline-block;
 }
 
 .showWrapper {
