@@ -36,41 +36,32 @@ let sumbitButton = (function () {
 
 let inputDataController = (function () {
 
-    // object constructor for data
-    let Exercise = function (date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3) {
-        this.date = date;
-        this.exercise = exercise;
-        this.svars0 = svars0;
-        this.svars1 = svars1;
-        this.svars2 = svars2;
-        this.svars3 = svars3;
-
-        this.rep0 = rep0;
-        this.rep1 = rep1;
-        this.rep2 = rep2;
-        this.rep3 = rep3;
-    }
-
-    // place where to store object
+    // place where to store training day data
     let training = [];
 
-
     return {
-        addTrainDay: function (date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3) {
-            let train;
-            train = new Exercise(date, exercise, svars0, svars1, svars2, svars3, rep0, rep1, rep2, rep3);
-            training.push(train);
-
-            return train;
-
+        // store data in training array
+        addTrainDay: function (...args) {
+            let trainArr;
+            trainArr = Array.prototype.slice.call(arguments);
+            return training.push(trainArr);
         },
-        getLastDate: function () {
-            let lastDay, lastDate, lastStrings, diena;
 
+        // returning last stored data from array training for DOM manipulation
+        returnTrainData: function () {
+            return training[training.length - 1];
+        },
+
+        // returning last stored training days date input
+        getLastDate: function () {
+            let lastDay, lastDate;
+            if (training.length > 0) {
+                lastDay = training[training.length - 1];
+                lastDate = lastDay[0];
+            }
+            return lastDate;
         }
     }
-
-
 })();
 
 
@@ -123,17 +114,17 @@ let UIinput = (function () {
                   </div>
                 </div>
               </div>`;
-            newHtmlFull = htmlFull.replace('&vingrinajumi&', obj.exercise);
-            newHtmlFull = newHtmlFull.replace('%datums%', obj.date)
-            newHtmlFull = newHtmlFull.replace('&svars0&', obj.svars0);
-            newHtmlFull = newHtmlFull.replace('&svars1&', obj.svars1);
-            newHtmlFull = newHtmlFull.replace('&svars2&', obj.svars2);
-            newHtmlFull = newHtmlFull.replace('&svars3&', obj.svars3);
+            newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
+            newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
+            newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
+            newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
+            newHtmlFull = newHtmlFull.replace('&svars2&', obj[4]);
+            newHtmlFull = newHtmlFull.replace('&svars3&', obj[5]);
 
-            newHtmlFull = newHtmlFull.replace('&rep0&', obj.rep0);
-            newHtmlFull = newHtmlFull.replace('&rep1&', obj.rep1);
-            newHtmlFull = newHtmlFull.replace('&rep2&', obj.rep2);
-            newHtmlFull = newHtmlFull.replace('&rep3&', obj.rep3);
+            newHtmlFull = newHtmlFull.replace('&rep0&', obj[5]);
+            newHtmlFull = newHtmlFull.replace('&rep1&', obj[6]);
+            newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
+            newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
 
 
             document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
@@ -168,18 +159,23 @@ let controller = (function (dataCtrl, UI) {
 
     let addItem = function () {
         let input, newItem, lastDate;
+
         // storing user input data
         input = UI.inputData();
 
+        // storing last days date
         lastDate = dataCtrl.getLastDate();
 
-        // creating data object and storing it to array
-        newItem = dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
+        // creating data array for current day and storing it to training in dataCtrl array
+        dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
-        // adding object tu DOM
+        // returning last stored days data from training array
+        newItem = dataCtrl.returnTrainData();
+        console.log(newItem);
+
+        // adding last days training data to the DOM
         UI.addExerciseToDom(newItem);
 
-        // console.log(lastDate);
 
 
     };
