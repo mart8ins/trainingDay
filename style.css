@@ -355,7 +355,7 @@ h2 {
   width: 70px;
   left: 92%;
   z-index: 3;
-  top: 9px;
+  top: 13px;
   font-size: 17px;
   font-weight: 400;
   padding: 5px;
@@ -371,6 +371,8 @@ h2 {
 
 .monday-pop-close:hover, .wednesday-pop-close:hover, .friday-pop-close:hover {
   cursor: pointer;
+  background: rgba(45, 48, 51, 0.1);
+  box-shadow: 3px 3px 8px white;
 }
 
 /* close button effect*/
@@ -482,6 +484,7 @@ PIEVIENOTIE VINGRINĀJUMI
   width: 95%;
   margin: 0 auto;
   margin-top: 10px;
+  margin-bottom: 30px;
   height: 320px;
   background: rgba(33, 37, 40, 0.4);
   overflow: auto;
@@ -516,9 +519,10 @@ PIEVIENOTIE VINGRINĀJUMI
 /* pats vingrinājums*/
 .vingrinajuma__box {
   width: 198px;
-  height: 87%;
+  height: 270px;
   margin-left: 8px;
   margin-top: 30px;
+  margin-bottom: 10px;
   background: rgba(33, 37, 40, 0.8);
   position: relative;
   display: inline-block;
@@ -526,7 +530,8 @@ PIEVIENOTIE VINGRINĀJUMI
 
 
 .vingrinajuma__box h4 {
-  font-size: 14px;
+  font-size: 12px;
+  padding: 5px;
 }
 
 .vingrinajuma__box img {

@@ -101,16 +101,16 @@ let UIinput = (function () {
                 <div class='vingrinajums__new'>
                   <div class="vingrinajuma__box">
                     <h4>&vingrinajumi&</h4>
-                    <img src="../image/monday/benchpress.jpg" alt="">
+                    <img src="../image/monday/%image%.jpg" alt="">
                     <div class="result__grid">
                       <div class="result__grid_item kg">&svars0& kg</div>
-                      <div class="result__grid_item rep">&rep0&x</div>
+                      <div class="result__grid_item rep">&rep0& x</div>
                       <div class="result__grid_item kg">&svars1& kg</div>
-                      <div class="result__grid_item rep">&rep1&x</div>
+                      <div class="result__grid_item rep">&rep1& x</div>
                       <div class="result__grid_item kg">&svars2& kg</div>
-                      <div class="result__grid_item rep">&rep2&x</div>
+                      <div class="result__grid_item rep">&rep2& x</div>
                       <div class="result__grid_item kg">&svars3& kg</div>
-                      <div class="result__grid_item rep">&rep3&x</div>
+                      <div class="result__grid_item rep">&rep3& x</div>
                     </div>
                   </div>
                 </div>
@@ -120,21 +120,50 @@ let UIinput = (function () {
             htmlTrain = `<div class='vingrinajums__new'>
                      <div class="vingrinajuma__box">
                        <h4>&vingrinajumi&</h4>
-                       <img src="../image/monday/benchpress.jpg" alt="">
+                       <img src="../image/monday/%image%.jpg" alt="">
                        <div class="result__grid">
                          <div class="result__grid_item kg">&svars0& kg</div>
-                         <div class="result__grid_item rep">&rep0&x</div>
+                         <div class="result__grid_item rep">&rep0& x</div>
                          <div class="result__grid_item kg">&svars1& kg</div>
-                         <div class="result__grid_item rep">&rep1&x</div>
+                         <div class="result__grid_item rep">&rep1& x</div>
                          <div class="result__grid_item kg">&svars2& kg</div>
-                         <div class="result__grid_item rep">&rep2&x</div>
+                         <div class="result__grid_item rep">&rep2& x</div>
                          <div class="result__grid_item kg">&svars3& kg</div>
-                         <div class="result__grid_item rep">&rep3&x</div>
+                         <div class="result__grid_item rep">&rep3& x</div>
                        </div>
                      </div>`;
 
             if (obj[0] !== lastDate) {
+
                 newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
+
+                switch (obj[1]) {
+                    case 'Front squats':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'frontSquats');
+                        break;
+                    case 'Bench press':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'benchpress');
+                        break;
+                    case 'Cable front raise':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'frontDeltoidRaise');
+                        break;
+                    case 'Hammer curl':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'hammerCurl');
+                        break;
+                    case 'Seated cable row':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'seatedCableRow');
+                        break;
+                    case 'Triceps row with rope':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'triceps_row');
+                        break;
+                    case 'Stair mill':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'stairmill');
+                        break;
+                    case 'Tread mill':
+                        newHtmlFull = newHtmlFull.replace('%image%', 'treadmill');
+                        break;
+                };
+
                 newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
                 newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
                 newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
@@ -146,10 +175,37 @@ let UIinput = (function () {
                 newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
                 newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
 
-
                 document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
             } else {
+
                 newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[1]);
+
+                switch (obj[1]) {
+                    case 'Front squats':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'frontSquats');
+                        break;
+                    case 'Bench press':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'benchpress');
+                        break;
+                    case 'Cable front raise':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'frontDeltoidRaise');
+                        break;
+                    case 'Hammer curl':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'hammerCurl');
+                        break;
+                    case 'Seated cable row':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'seatedCableRow');
+                        break;
+                    case 'Triceps row with rope':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'triceps_row');
+                        break;
+                    case 'Stair mill':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'stairmill');
+                        break;
+                    case 'Tread mill':
+                        newHtmlTrain = newHtmlTrain.replace('%image%', 'treadmill');
+                        break;
+                };
                 //newHtmlTrain = newHtmlTrain.replace('%datums%', obj[0])
                 newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[2]);
                 newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[3]);
@@ -160,6 +216,8 @@ let UIinput = (function () {
                 newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[6]);
                 newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[7]);
                 newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[8]);
+
+
 
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
