@@ -97,7 +97,7 @@ let UIinput = (function () {
 
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
-                <div class="new__date">Datums %datums%</div>
+                <div class="new__date">%datums%</div>
                 <div class='vingrinajums__new'>
                   <div class="vingrinajuma__box">
                     <h4>&vingrinajumi&</h4>
@@ -134,9 +134,7 @@ let UIinput = (function () {
                      </div>`;
 
             if (obj[0] !== lastDate) {
-
                 newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
-
                 switch (obj[1]) {
                     case 'Front squats':
                         newHtmlFull = newHtmlFull.replace('%image%', 'frontSquats');
@@ -163,23 +161,19 @@ let UIinput = (function () {
                         newHtmlFull = newHtmlFull.replace('%image%', 'treadmill');
                         break;
                 };
-
                 newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
                 newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
                 newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
                 newHtmlFull = newHtmlFull.replace('&svars2&', obj[4]);
                 newHtmlFull = newHtmlFull.replace('&svars3&', obj[5]);
-
                 newHtmlFull = newHtmlFull.replace('&rep0&', obj[5]);
                 newHtmlFull = newHtmlFull.replace('&rep1&', obj[6]);
                 newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
                 newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
-
                 document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
             } else {
 
                 newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[1]);
-
                 switch (obj[1]) {
                     case 'Front squats':
                         newHtmlTrain = newHtmlTrain.replace('%image%', 'frontSquats');
@@ -206,19 +200,14 @@ let UIinput = (function () {
                         newHtmlTrain = newHtmlTrain.replace('%image%', 'treadmill');
                         break;
                 };
-                //newHtmlTrain = newHtmlTrain.replace('%datums%', obj[0])
                 newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[2]);
                 newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[3]);
                 newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[4]);
                 newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[5]);
-
                 newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[5]);
                 newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[6]);
                 newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[7]);
                 newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[8]);
-
-
-
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
         }
