@@ -164,3 +164,17 @@ treadMillNav.addEventListener("click", function () {
     stairMill.style.display = "none";
     treadMill.style.display = "block";
 }, true);
+
+
+
+// *************************************************** training days image resizing to large when clicked
+
+let largeImg = function (event) {
+
+    if (event.target.tagName == 'IMG' && event.target.className != 'introIMG') {
+        let lrgIMG = event.target;
+        console.log(lrgIMG);
+        lrgIMG.classList.toggle('lrgIMG');
+    }
+};
+document.querySelector('.contentContainerMonday').addEventListener('click', largeImg);

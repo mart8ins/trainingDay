@@ -230,6 +230,21 @@ h4 {
 }
 
 
+
+/* *********************
+        clases for JS changes 
+ ************************/
+
+/* for training images - to large image on click/toggle */
+.lrgIMG {
+  transform: scale(2.1);
+  z-index: 3;
+  border: 1px solid black;
+}
+
+
+
+
 /* *********************
         animations 
  ************************/
@@ -265,39 +280,17 @@ h2 {
 }
 
 /* training days image animation*/
-.contentContainerMonday img {
+.contentContainerMonday img, .contentContainerWednesday img, .contentContainerFriday img {
   position: relative;
   animation-name: img;
   animation-duration: 2s;
+  cursor: pointer;
 }
 
 @keyframes img {
   0% {opacity: 0}
   100% {opacity: 1}
 }
-
-.contentContainerWednesday img {
-  position: relative;
-  animation-name: img;
-  animation-duration: 2s;
-}
-
-@keyframes img {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-
-.contentContainerFriday img {
-  position: relative;
-  animation-name: img;
-  animation-duration: 2s;
-}
-
-@keyframes img {
-  0% {opacity: 0}
-  100% {opacity: 1}
-}
-
 
 
 /************************************************ BUTTON WITH POP UP WINDOW *************************************/
