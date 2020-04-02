@@ -257,3 +257,18 @@ let controller = (function (dataCtrl, UI) {
 })(inputDataController, UIinput);
 
 controller.init();
+
+
+
+/* nesanaaaak */
+
+let largeResultBox = function () {
+    //let ev = event.target.className;
+    //console.log(ev)
+    let tren = document.getElementsByClassName('vingrinajuma__box');
+    tren.classList.toggle('vingrinajuma__box_large');
+
+
+};
+
+document.querySelector('.days__container').addEventListener('click', largeResultBox);

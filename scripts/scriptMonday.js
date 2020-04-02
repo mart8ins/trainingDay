@@ -173,7 +173,6 @@ let largeImg = function (event) {
 
     if (event.target.tagName == 'IMG' && event.target.className != 'introIMG') {
         let lrgIMG = event.target;
-        console.log(lrgIMG);
         lrgIMG.classList.toggle('lrgIMG');
     }
 };
