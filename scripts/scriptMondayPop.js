@@ -216,14 +216,47 @@ let UIinput = (function () {
 
 
 
+/*****************************
+ Storing data to local storage
+ *****************************/
+
+let localStorageControl = (function () {
+
+    return {
+        // add training day data to local storage
+        addToLocalStorage: function (day, val) {
+            let storageData = localStorageControl.getInfoFromLocalStorage(day);
+            storageData.push(val);
+
+            localStorage.setItem(day, JSON.stringify(storageData));
+        },
+
+        // function to check local storage status, if there is any stored data
+        getInfoFromLocalStorage: function (day) {
+            let dataLS;
+            if (localStorage.getItem(day) === null) {
+                dataLS = [];
+            } else {
+                dataLS = JSON.parse(localStorage.getItem(day));
+            }
+            return dataLS;
+        }
+    }
+
+
+})();
+
+
+
 // MAIN CONTROLLER
-let controller = (function (dataCtrl, UI) {
+let controller = (function (dataCtrl, UI, toLS) {
 
     let addItem = function () {
         let input, newItem, lastDate;
 
         // storing user input data
         input = UI.inputData();
+        currentInputDay = input.datums;
 
         // storing last days date
         lastDate = dataCtrl.getLastDate();
@@ -233,13 +266,11 @@ let controller = (function (dataCtrl, UI) {
 
         // returning last stored days data from training array
         newItem = dataCtrl.returnTrainData();
-        console.log(newItem);
-
         // adding last days training data to the DOM
         UI.addExerciseToDom(newItem, lastDate);
 
-
-
+        // add stored data in localStorage
+        toLS.addToLocalStorage(currentInputDay, newItem);
     };
 
     // click event listener
@@ -254,9 +285,13 @@ let controller = (function (dataCtrl, UI) {
             eventListeners();
         }
     }
-})(inputDataController, UIinput);
+})(inputDataController, UIinput, localStorageControl);
 
 controller.init();
+
+
+
+
 
 
 
