@@ -95,12 +95,19 @@ let UIinput = (function () {
         addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
             let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain;
 
+
+
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
                 <div class="new__date">%datums%</div>
                 <div class='vingrinajums__new'>
                   <div class="vingrinajuma__box">
+                  
+                    <div class="title-and-remove">
                     <h4>&vingrinajumi&</h4>
+                    <p class="remove-exercise">X</p>
+                    </div>
+
                     <img src="../image/monday/%image%.jpg" alt="">
                     <div class="result__grid">
                       <div class="result__grid_item kg">&svars0& kg</div>
@@ -119,7 +126,12 @@ let UIinput = (function () {
             // vingrinājuma konteineris
             htmlTrain = `<div class='vingrinajums__new'>
                      <div class="vingrinajuma__box">
-                       <h4>&vingrinajumi&</h4>
+
+                        <div class="title-and-remove">
+                        <h4>&vingrinajumi&</h4>
+                        <p class="remove-exercise">X</p>
+                        </div>
+
                        <img src="../image/monday/%image%.jpg" alt="">
                        <div class="result__grid">
                          <div class="result__grid_item kg">&svars0& kg</div>
