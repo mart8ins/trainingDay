@@ -285,9 +285,22 @@ let controller = (function (dataCtrl, UI, toLS) {
         toLS.addToLocalStorage(currentInputDay, newItem);
     };
 
+    // removing element from DOM and localStorage
+    let removeItem = function (e) {
+        // from DOM
+        let exercise = e.target.parentElement.parentElement;
+        let exerciseLS = localStorageControl.getInfoFromLocalStorage();
+        if (e.target.classList.contains('remove-exercise')) {
+            e.target.parentElement.parentElement.parentElement.removeChild(exercise);
+        }
+
+
+    };
+
     // click event listener
     let eventListeners = function () {
         document.querySelector('.formPoga').addEventListener('click', addItem);
+        document.querySelector('.days__container').addEventListener('click', removeItem);
     }
 
 
@@ -302,13 +315,13 @@ let controller = (function (dataCtrl, UI, toLS) {
 controller.init();
 
 
-
+console.log(localStorageControl.getInfoFromLocalStorage());
 
 
 
 
 /* nesanaaaak */
-
+/*
 let largeResultBox = function () {
     //let ev = event.target.className;
     //console.log(ev)
@@ -319,3 +332,4 @@ let largeResultBox = function () {
 };
 
 document.querySelector('.days__container').addEventListener('click', largeResultBox);
+*/
