@@ -38,7 +38,7 @@ let inputDataController = (function () {
 
     // place where to store training day data
     let training = [];
-
+    console.log(training)
     return {
         // store data in training array
         addTrainDay: function (...args) {
@@ -62,7 +62,8 @@ let inputDataController = (function () {
             let lastDay, lastDate;
             if (training.length > 0) {
                 lastDay = training[training.length - 1];
-                lastDate = lastDay[0];
+                lastDate = lastDay[1];
+
             }
             return lastDate;
         },
@@ -106,6 +107,10 @@ let UIinput = (function () {
             }
         },
 
+        randomNumID: function () {
+            return Math.floor(Math.random() * 1000);
+        },
+
 
         addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
             let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain;
@@ -113,7 +118,7 @@ let UIinput = (function () {
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
                 <div class="new__date">%datums%</div>
-                <div class='vingrinajums__new'>
+                <div class='vingrinajums__new' id=%idVal%>
                   <div class="vingrinajuma__box">
                   
                     <div class="title-and-remove">
@@ -137,7 +142,7 @@ let UIinput = (function () {
               </div>`;
 
             // vingrinājuma konteineris
-            htmlTrain = `<div class='vingrinajums__new'>
+            htmlTrain = `<div class='vingrinajums__new' id=%idVal%>
                      <div class="vingrinajuma__box">
 
                         <div class="title-and-remove">
@@ -158,9 +163,9 @@ let UIinput = (function () {
                        </div>
                      </div>`;
 
-            if (obj[0] !== lastDate) {
-                newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[1]);
-                switch (obj[1]) {
+            if (obj[1] !== lastDate) {
+                newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[2]);
+                switch (obj[2]) {
                     case 'Front squats':
                         newHtmlFull = newHtmlFull.replace('%image%', 'frontSquats');
                         break;
@@ -186,20 +191,21 @@ let UIinput = (function () {
                         newHtmlFull = newHtmlFull.replace('%image%', 'treadmill');
                         break;
                 };
-                newHtmlFull = newHtmlFull.replace('%datums%', obj[0])
-                newHtmlFull = newHtmlFull.replace('&svars0&', obj[2]);
-                newHtmlFull = newHtmlFull.replace('&svars1&', obj[3]);
-                newHtmlFull = newHtmlFull.replace('&svars2&', obj[4]);
-                newHtmlFull = newHtmlFull.replace('&svars3&', obj[5]);
-                newHtmlFull = newHtmlFull.replace('&rep0&', obj[5]);
-                newHtmlFull = newHtmlFull.replace('&rep1&', obj[6]);
-                newHtmlFull = newHtmlFull.replace('&rep2&', obj[7]);
-                newHtmlFull = newHtmlFull.replace('&rep3&', obj[8]);
+                newHtmlFull = newHtmlFull.replace('%idVal%', obj[0]);
+                newHtmlFull = newHtmlFull.replace('%datums%', obj[1]);
+                newHtmlFull = newHtmlFull.replace('&svars0&', obj[3]);
+                newHtmlFull = newHtmlFull.replace('&svars1&', obj[4]);
+                newHtmlFull = newHtmlFull.replace('&svars2&', obj[5]);
+                newHtmlFull = newHtmlFull.replace('&svars3&', obj[6]);
+                newHtmlFull = newHtmlFull.replace('&rep0&', obj[7]);
+                newHtmlFull = newHtmlFull.replace('&rep1&', obj[8]);
+                newHtmlFull = newHtmlFull.replace('&rep2&', obj[9]);
+                newHtmlFull = newHtmlFull.replace('&rep3&', obj[10]);
                 document.querySelector('.days__container').insertAdjacentHTML('afterbegin', newHtmlFull);
             } else {
 
-                newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[1]);
-                switch (obj[1]) {
+                newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[2]);
+                switch (obj[2]) {
                     case 'Front squats':
                         newHtmlTrain = newHtmlTrain.replace('%image%', 'frontSquats');
                         break;
@@ -225,14 +231,15 @@ let UIinput = (function () {
                         newHtmlTrain = newHtmlTrain.replace('%image%', 'treadmill');
                         break;
                 };
-                newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[2]);
-                newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[3]);
-                newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[4]);
-                newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[5]);
-                newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[5]);
-                newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[6]);
-                newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[7]);
-                newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[8]);
+                newHtmlTrain = newHtmlTrain.replace('%idVal%', obj[0]);
+                newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[3]);
+                newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[4]);
+                newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[5]);
+                newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[6]);
+                newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[6]);
+                newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[7]);
+                newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[8]);
+                newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[9]);
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
         },
@@ -286,17 +293,21 @@ let localStorageControl = (function () {
 let controller = (function (dataCtrl, UI, toLS) {
 
     let addItem = function () {
-        let input, newItem, lastDate;
+        let input, newItem, lastDate, randomID;
 
         // storing user input data
         input = UI.inputData();
         currentInputDay = input.datums;
 
+        // creating id (random number) for exercise
+        randomID = UI.randomNumID();
+        console.log(randomID);
+
         // storing last days date
         lastDate = dataCtrl.getLastDate();
 
         // creating data array for current day and storing it to training in dataCtrl array
-        dataCtrl.addTrainDay(input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
+        dataCtrl.addTrainDay(randomID, input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
         // returning last stored days data from training array
         newItem = dataCtrl.returnTrainData();
@@ -305,6 +316,8 @@ let controller = (function (dataCtrl, UI, toLS) {
 
         // add stored data in localStorage
         toLS.addToLocalStorage(currentInputDay, newItem);
+
+
     };
 
 
