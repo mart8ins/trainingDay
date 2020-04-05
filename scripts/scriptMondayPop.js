@@ -52,6 +52,11 @@ let inputDataController = (function () {
             return training[training.length - 1];
         },
 
+        // returning full data array
+        returnTrainDataFull: function () {
+            return training;
+        },
+
         // returning last stored training days date input
         getLastDate: function () {
             let lastDay, lastDate;
@@ -60,10 +65,20 @@ let inputDataController = (function () {
                 lastDate = lastDay[0];
             }
             return lastDate;
+        },
+
+        // remove exercise from data
+        removeExFromData: function (itemR) {
+            training.forEach(function (val, i) {
+                console.log(`Index: ${i}, bet vērtība ${val}`);
+
+                if (val === itemR) {
+                    training.splice(val, i);
+                }
+            })
         }
     }
 })();
-
 
 
 
@@ -94,8 +109,6 @@ let UIinput = (function () {
 
         addExerciseToDom: function (obj, lastDate) { // addExerciseToDom
             let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain;
-
-
 
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
@@ -222,6 +235,15 @@ let UIinput = (function () {
                 newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[8]);
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
+        },
+
+        removeExerciseFromDOM: function (e) {
+            // container for removing html element
+            let exercise = e.target.parentElement.parentElement;
+
+            if (e.target.classList.contains('remove-exercise')) {
+                e.target.parentElement.parentElement.parentElement.removeChild(exercise);
+            }
         }
     }
 })();
@@ -285,17 +307,27 @@ let controller = (function (dataCtrl, UI, toLS) {
         toLS.addToLocalStorage(currentInputDay, newItem);
     };
 
+
+
+
     // removing element from DOM and localStorage
     let removeItem = function (e) {
-        // from DOM
-        let exercise = e.target.parentElement.parentElement;
-        let exerciseLS = localStorageControl.getInfoFromLocalStorage();
-        if (e.target.classList.contains('remove-exercise')) {
-            e.target.parentElement.parentElement.parentElement.removeChild(exercise);
-        }
+        // full training data
+        let fullTrainData = dataCtrl.returnTrainDataFull();
 
+
+        // removing item from DOM
+        UI.removeExerciseFromDOM(e);
+
+        // removing item from data
+        dataCtrl.removeExFromData(e);
+        // removing item from localStorage
 
     };
+
+
+
+
 
     // click event listener
     let eventListeners = function () {
@@ -314,8 +346,6 @@ let controller = (function (dataCtrl, UI, toLS) {
 
 controller.init();
 
-
-console.log(localStorageControl.getInfoFromLocalStorage());
 
 
 
