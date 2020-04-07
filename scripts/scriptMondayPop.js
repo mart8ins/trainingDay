@@ -242,14 +242,13 @@ let UIinput = (function () {
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
         },
-        /*
-                removeExerciseFromDOM: function (e) {
-                    // container for removing html element
-                    let exercise = e.target.parentElement.parentElement;
-                    if (e.target.classList.contains('remove-exercise')) {
-                        e.target.parentElement.parentElement.parentElement.removeChild(exercise);
-                    }
-                }*/
+
+        removeExerciseFromDOM: function (e) {
+            let exercise = e.target.parentElement.parentElement;
+            if (e.target.classList.contains('remove-exercise')) {
+                e.target.parentElement.parentElement.parentElement.removeChild(exercise);
+            }
+        }
     }
 })();
 
@@ -293,8 +292,6 @@ let localStorageControl = (function () {
             })
 
             localStorage.setItem(date, JSON.stringify(storageDataRem));
-
-
         }
     }
 })();
@@ -328,8 +325,6 @@ let controller = (function (dataCtrl, UI, toLS) {
 
         // add stored data in localStorage
         toLS.addToLocalStorage(currentInputDay, newItem);
-
-
     };
 
 
@@ -345,11 +340,10 @@ let controller = (function (dataCtrl, UI, toLS) {
         exerciseContainerID = parseInt(exerciseContainer.getAttribute('id'));
 
         // current removable exercise - vingrinajums__box
-        exercise = e.target.parentElement.parentElement;
+        // exercise = e.target.parentElement.parentElement;
 
         // targeted days date
         date = e.target.parentElement.parentElement.parentElement.parentElement.children[0].getAttribute('id');
-
 
         // remove data from data array in data controller
         dataCtrl.removeExFromData(exerciseContainerID);
@@ -359,12 +353,8 @@ let controller = (function (dataCtrl, UI, toLS) {
             toLS.removeFromLS(date, exerciseContainerID);
         }
 
-
         // removes exercise from DOM
-        if (e.target.classList.contains('remove-exercise')) {
-            e.target.parentElement.parentElement.parentElement.removeChild(exercise);
-        }
-
+        UI.removeExerciseFromDOM(e);
     };
 
 
