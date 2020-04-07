@@ -68,13 +68,11 @@ let inputDataController = (function () {
             return lastDate;
         },
 
-        // remove exercise from data
-        removeExFromData: function (itemR) {
+        // remove exercise from data array
+        removeExFromData: function (id) {
             training.forEach(function (val, i) {
-                console.log(`Index: ${i}, bet vērtība ${val}`);
-
-                if (val === itemR) {
-                    training.splice(val, i);
+                if (val[0] === id) {
+                    training.splice(i, 1)
                 }
             })
         }
@@ -117,7 +115,7 @@ let UIinput = (function () {
 
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
-                <div class="new__date">%datums%</div>
+                <div class="new__date" id=%dateVal%>%datums%</div>
                 <div class='vingrinajums__new' id=%idVal%>
                   <div class="vingrinajuma__box">
                   
@@ -193,6 +191,7 @@ let UIinput = (function () {
                 };
                 newHtmlFull = newHtmlFull.replace('%idVal%', obj[0]);
                 newHtmlFull = newHtmlFull.replace('%datums%', obj[1]);
+                newHtmlFull = newHtmlFull.replace('%dateVal%', obj[1]); // dienas ID
                 newHtmlFull = newHtmlFull.replace('&svars0&', obj[3]);
                 newHtmlFull = newHtmlFull.replace('&svars1&', obj[4]);
                 newHtmlFull = newHtmlFull.replace('&svars2&', obj[5]);
@@ -243,15 +242,14 @@ let UIinput = (function () {
                 document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
             }
         },
-
-        removeExerciseFromDOM: function (e) {
-            // container for removing html element
-            let exercise = e.target.parentElement.parentElement;
-
-            if (e.target.classList.contains('remove-exercise')) {
-                e.target.parentElement.parentElement.parentElement.removeChild(exercise);
-            }
-        }
+        /*
+                removeExerciseFromDOM: function (e) {
+                    // container for removing html element
+                    let exercise = e.target.parentElement.parentElement;
+                    if (e.target.classList.contains('remove-exercise')) {
+                        e.target.parentElement.parentElement.parentElement.removeChild(exercise);
+                    }
+                }*/
     }
 })();
 
@@ -281,10 +279,24 @@ let localStorageControl = (function () {
                 dataLS = JSON.parse(localStorage.getItem(day));
             }
             return dataLS;
+        },
+
+
+        // function to remove element from localStorage
+        removeFromLS: function (date, id) {
+            let storageDataRem = localStorageControl.getInfoFromLocalStorage(date);
+
+            storageDataRem.forEach(function (val, i) {
+                if (val[0] === id) {
+                    storageDataRem.splice(i, 1);
+                }
+            })
+
+            localStorage.setItem(date, JSON.stringify(storageDataRem));
+
+
         }
     }
-
-
 })();
 
 
@@ -299,14 +311,14 @@ let controller = (function (dataCtrl, UI, toLS) {
         input = UI.inputData();
         currentInputDay = input.datums;
 
+
         // creating id (random number) for exercise
         randomID = UI.randomNumID();
-        console.log(randomID);
 
         // storing last days date
         lastDate = dataCtrl.getLastDate();
 
-        // creating data array for current day and storing it to training in dataCtrl array
+        // creating data array for current day and storing it to training in dataCtrl array, also every exercise gets ID
         dataCtrl.addTrainDay(randomID, input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
 
         // returning last stored days data from training array
@@ -325,16 +337,33 @@ let controller = (function (dataCtrl, UI, toLS) {
 
     // removing element from DOM and localStorage
     let removeItem = function (e) {
-        // full training data
-        let fullTrainData = dataCtrl.returnTrainDataFull();
+        let exerciseContainer, exerciseContainerID, exercise, date;
+
+        // vingrinajums__new container for new exercise
+        exerciseContainer = e.target.parentElement.parentElement.parentElement;
+        // ID for exercise
+        exerciseContainerID = parseInt(exerciseContainer.getAttribute('id'));
+
+        // current removable exercise - vingrinajums__box
+        exercise = e.target.parentElement.parentElement;
+
+        // targeted days date
+        date = e.target.parentElement.parentElement.parentElement.parentElement.children[0].getAttribute('id');
 
 
-        // removing item from DOM
-        UI.removeExerciseFromDOM(e);
+        // remove data from data array in data controller
+        dataCtrl.removeExFromData(exerciseContainerID);
 
-        // removing item from data
-        dataCtrl.removeExFromData(e);
-        // removing item from localStorage
+        // remove data from local storage
+        if (date.includes('-')) { // checks if id contains character -, what is in dates ID
+            toLS.removeFromLS(date, exerciseContainerID);
+        }
+
+
+        // removes exercise from DOM
+        if (e.target.classList.contains('remove-exercise')) {
+            e.target.parentElement.parentElement.parentElement.removeChild(exercise);
+        }
 
     };
 
