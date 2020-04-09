@@ -52,9 +52,13 @@ let inputDataController = (function () {
             return training[training.length - 1];
         },
 
-        // returning full data array
-        returnTrainDataFull: function () {
-            return training;
+        // returning all ID from full data array
+        returnTrainDataID: function () {
+            let arrIDs = [];
+            training.forEach(function (val, i) {
+                arrIDs.push(val[0]);
+            });
+            return arrIDs;
         },
 
         // returning last stored training days date input
@@ -105,8 +109,20 @@ let UIinput = (function () {
             }
         },
 
-        randomNumID: function () {
-            return Math.floor(Math.random() * 1000);
+        randomNumID: function (IDsArr) {
+            let cur, arr;
+            cur = Math.floor(Math.random() * 1000);
+            arr = IDsArr;
+            // checking if ID already exists if not than ok,  if it exists, generate new ID
+            for (let i = 0; i <= arr.length; i++) {
+                if (cur === arr[i]) {
+                    console.log('kapee')
+                    cur = Math.floor(Math.random() * 1000);
+                } else {
+                    return cur;
+                }
+            }
+            return cur;
         },
 
 
@@ -302,15 +318,17 @@ let localStorageControl = (function () {
 let controller = (function (dataCtrl, UI, toLS) {
 
     let addItem = function () {
-        let input, newItem, lastDate, randomID;
+        let input, newItem, lastDate, randomID, dataIDs;
 
         // storing user input data
         input = UI.inputData();
         currentInputDay = input.datums;
 
+        // return all IDs in training array
+        dataIDs = dataCtrl.returnTrainDataID();
 
         // creating id (random number) for exercise
-        randomID = UI.randomNumID();
+        randomID = UI.randomNumID(dataIDs);
 
         // storing last days date
         lastDate = dataCtrl.getLastDate();
@@ -386,7 +404,7 @@ controller.init();
 /*
 let largeResultBox = function () {
     //let ev = event.target.className;
-    //console.log(ev)
+
     let tren = document.getElementsByClassName('vingrinajuma__box');
     tren.classList.toggle('vingrinajuma__box_large');
 
