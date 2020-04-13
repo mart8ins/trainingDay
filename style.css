@@ -623,16 +623,6 @@ z-index: 1;
   display: inline-block;
 }
 
-.vingrinajuma__box_large {
-  transform: scale(2.2);
-  z-index: 2;
-  position: absolute;
-  left: 500px;
-  top: 150px;
-  display: block;
-  border: 2px solid white;
-}
-
 
 
 /* exercise name and remove button container */
