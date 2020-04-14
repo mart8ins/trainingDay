@@ -122,8 +122,8 @@ let UIinput = (function () {
             return cur;
         },
 
-
-        addExerciseToDom: function (obj, dates) { // addExerciseToDom
+        // addExerciseToDom
+        addExerciseToDom: function (obj, dates) {
 
             let x;
             for (let i = 0; i < dates.length; i++) {
@@ -131,9 +131,7 @@ let UIinput = (function () {
                     x = dates[i];
                 }
             }
-
-
-            let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain, htmlCorrect, htmlCorrectNew;
+            let htmlFull, newHtmlFull, htmlTrain, newHtmlTrain;
 
             // jaunas dienas konteineris
             htmlFull = `<div id="day__wrapper">
@@ -182,31 +180,6 @@ let UIinput = (function () {
                          <div class="result__grid_item rep">&rep3& x</div>
                        </div>
                      </div>`;
-
-            htmlCorrect = `<div class="new__date" id=%dateVal%>%datums%</div>
-                     <div class='vingrinajums__new' id=%idVal%>
-                       <div class="vingrinajuma__box">
-                       
-                         <div class="title-and-remove">
-                         <h4>&vingrinajumi&</h4>
-                         <p class="remove-exercise">X</p>
-                         </div>
-     
-                         <img src="../image/monday/%image%.jpg" alt="">
-                         <div class="result__grid">
-                           <div class="result__grid_item kg">&svars0& kg</div>
-                           <div class="result__grid_item rep">&rep0& x</div>
-                           <div class="result__grid_item kg">&svars1& kg</div>
-                           <div class="result__grid_item rep">&rep1& x</div>
-                           <div class="result__grid_item kg">&svars2& kg</div>
-                           <div class="result__grid_item rep">&rep2& x</div>
-                           <div class="result__grid_item kg">&svars3& kg</div>
-                           <div class="result__grid_item rep">&rep3& x</div>
-                         </div>
-                       </div>
-                     </div>`;
-
-
 
             if (obj[1] !== x) {
                 newHtmlFull = htmlFull.replace('&vingrinajumi&', obj[2]);
@@ -340,6 +313,168 @@ let localStorageControl = (function () {
             })
 
             localStorage.setItem(date, JSON.stringify(storageDataRem));
+        },
+
+
+        fromLStoDOM: function (obj) {
+            let htmlFull, curImg, dayID;
+
+            switch (obj[2]) {
+                case 'Front squats':
+                    curImg = 'frontSquats';
+                    break;
+                case 'Bench press':
+                    curImg = 'benchpress';
+                    break;
+                case 'Cable front raise':
+                    curImg = 'frontDeltoidRaise';
+                    break;
+                case 'Hammer curl':
+                    curImg = 'hammerCurl';
+                    break;
+                case 'Seated cable row':
+                    curImg = 'seatedCableRow';
+                    break;
+                case 'Triceps row with rope':
+                    curImg = 'triceps_row';
+                    break;
+                case 'Stair mill':
+                    curImg = 'stairmill';
+                    break;
+                case 'Tread mill':
+                    curImg = 'treadmill';
+                    break;
+            };
+
+            //dayID = document.querySelector('.new__date').getAttribute('id');
+            let dd = document.querySelector('.days__container').childElementCount;
+            let aa = document.querySelector('.days__container').children[0];
+            if (aa) {
+                dayID = aa.childNodes[1].getAttribute('id');
+            }
+
+
+
+
+            if (dayID === obj[1]) {
+                htmlTrain = `<div class='vingrinajums__new' id=${obj[0]}>
+                     <div class="vingrinajuma__box">
+
+                        <div class="title-and-remove">
+                        <h4>${obj[2]}</h4>
+                        <p class="remove-exercise">X</p>
+                        </div>
+
+                       <img src="../image/monday/${curImg}.jpg" alt="">
+                       <div class="result__grid">
+                            <div class="result__grid_item kg">${obj[3]} kg</div>
+                            <div class="result__grid_item rep">${obj[7]} x</div>
+                            <div class="result__grid_item kg">${obj[4]} kg</div>
+                            <div class="result__grid_item rep">${obj[8]} x</div>
+                            <div class="result__grid_item kg">${obj[5]} kg</div>
+                            <div class="result__grid_item rep">${obj[9]} x</div>
+                            <div class="result__grid_item kg">${obj[6]} kg</div>
+                            <div class="result__grid_item rep">${obj[10]} x</div>
+                       </div>
+                     </div>`;
+                document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', htmlTrain);
+            } else {
+                // jaunas dienas konteineris
+                htmlFull = `<div id="day__wrapper">
+                    <div class="new__date" id=${obj[1]}>${obj[1]}</div>
+                    <div class='vingrinajums__new' id=${obj[0]}>
+                    <div class="vingrinajuma__box">
+                    
+                        <div class="title-and-remove">
+                        <h4>${obj[2]}</h4>
+                        <p class="remove-exercise">X</p>
+                        </div>
+
+                        <img src="../image/monday/${curImg}.jpg" alt="">
+                        <div class="result__grid">
+                        <div class="result__grid_item kg">${obj[3]} kg</div>
+                        <div class="result__grid_item rep">${obj[7]} x</div>
+                        <div class="result__grid_item kg">${obj[4]} kg</div>
+                        <div class="result__grid_item rep">${obj[8]} x</div>
+                        <div class="result__grid_item kg">${obj[5]} kg</div>
+                        <div class="result__grid_item rep">${obj[9]} x</div>
+                        <div class="result__grid_item kg">${obj[6]} kg</div>
+                        <div class="result__grid_item rep">${obj[10]} x</div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>`;
+                document.querySelector('.days__container').insertAdjacentHTML('afterbegin', htmlFull);
+            }
+
+
+
+
+
+            //vingrinājuma konteineris
+            // htmlTrain = `<div class='vingrinajums__new' id=%idVal%>
+            //          <div class="vingrinajuma__box">
+
+            //             <div class="title-and-remove">
+            //             <h4>&vingrinajumi&</h4>
+            //             <p class="remove-exercise">X</p>
+            //             </div>
+
+            //            <img src="../image/monday/%image%.jpg" alt="">
+            //            <div class="result__grid">
+            //              <div class="result__grid_item kg">&svars0& kg</div>
+            //              <div class="result__grid_item rep">&rep0& x</div>
+            //              <div class="result__grid_item kg">&svars1& kg</div>
+            //              <div class="result__grid_item rep">&rep1& x</div>
+            //              <div class="result__grid_item kg">&svars2& kg</div>
+            //              <div class="result__grid_item rep">&rep2& x</div>
+            //              <div class="result__grid_item kg">&svars3& kg</div>
+            //              <div class="result__grid_item rep">&rep3& x</div>
+            //            </div>
+            //          </div>`;
+
+
+            // if (date) {
+            //     newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[2]);
+            //     switch (obj[2]) {
+            //         case 'Front squats':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'frontSquats');
+            //             break;
+            //         case 'Bench press':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'benchpress');
+            //             break;
+            //         case 'Cable front raise':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'frontDeltoidRaise');
+            //             break;
+            //         case 'Hammer curl':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'hammerCurl');
+            //             break;
+            //         case 'Seated cable row':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'seatedCableRow');
+            //             break;
+            //         case 'Triceps row with rope':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'triceps_row');
+            //             break;
+            //         case 'Stair mill':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'stairmill');
+            //             break;
+            //         case 'Tread mill':
+            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'treadmill');
+            //             break;
+            //     };
+            //     newHtmlTrain = newHtmlTrain.replace('%idVal%', obj[0]);
+            //     newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[3]);
+            //     newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[4]);
+            //     newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[5]);
+            //     newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[6]);
+            //     newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[7]);
+            //     newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[8]);
+            //     newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[9]);
+            //     newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[10]);
+            //     document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
+            // }
+
+
         }
     }
 })();
@@ -364,7 +499,7 @@ let controller = (function (dataCtrl, UI, toLS) {
 
         // storing last days date
         dates = dataCtrl.getAllDates();
-        console.log(dates)
+
 
         // creating data array for current day and storing it to training in dataCtrl array, also every exercise gets ID
         dataCtrl.addTrainDay(randomID, input.datums, input.vingrinajumi, input.svars0, input.svars1, input.svars2, input.svars3, input.rep0, input.rep1, input.rep2, input.rep3);
@@ -402,6 +537,8 @@ let controller = (function (dataCtrl, UI, toLS) {
         // remove data from local storage
         if (date.includes('-')) { // checks if id contains character -, what is in dates ID
             toLS.removeFromLS(date, exerciseContainerID);
+        } else {
+            console.log("error for removing something from localStorage");
         }
 
         // removes exercise from DOM
@@ -411,74 +548,25 @@ let controller = (function (dataCtrl, UI, toLS) {
 
 
 
-    //on document load all data is shown in DOM
+    //on document load all data is shown in DOM and stored in array
     let documentOnLoad = function () {
-        let val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10, htmlFull, newHtmlFull,
-            htmlTrain, newHtmlTrain, valFullArr, dateKey, dateData, trainingData, trainingDates;
-
-        // jaunas dienas konteineris
-        htmlFull = `<div id="day__wrapper">
-            <div class="new__date" id=%dateVal%>%datums%</div>
-            <div class='vingrinajums__new' id=%idVal%>
-            <div class="vingrinajuma__box">
-
-                <div class="title-and-remove">
-                <h4>&vingrinajumi&</h4>
-                <p class="remove-exercise">X</p>
-                </div>
-
-                <img src="../image/monday/%image%.jpg" alt="">
-                <div class="result__grid">
-                <div class="result__grid_item kg">&svars0& kg</div>
-                <div class="result__grid_item rep">&rep0& x</div>
-                <div class="result__grid_item kg">&svars1& kg</div>
-                <div class="result__grid_item rep">&rep1& x</div>
-                <div class="result__grid_item kg">&svars2& kg</div>
-                <div class="result__grid_item rep">&rep2& x</div>
-                <div class="result__grid_item kg">&svars3& kg</div>
-                <div class="result__grid_item rep">&rep3& x</div>
-                </div>
-            </div>
-            </div>
-            </div>`;
-
-        // vingrinājuma konteineris
-        htmlTrain = `<div class='vingrinajums__new' id=%idVal%>
-                <div class="vingrinajuma__box">
-
-                    <div class="title-and-remove">
-                    <h4>&vingrinajumi&</h4>
-                    <p class="remove-exercise">X</p>
-                    </div>
-
-                <img src="../image/monday/%image%.jpg" alt="">
-                <div class="result__grid">
-                    <div class="result__grid_item kg">&svars0& kg</div>
-                    <div class="result__grid_item rep">&rep0& x</div>
-                    <div class="result__grid_item kg">&svars1& kg</div>
-                    <div class="result__grid_item rep">&rep1& x</div>
-                    <div class="result__grid_item kg">&svars2& kg</div>
-                    <div class="result__grid_item rep">&rep2& x</div>
-                    <div class="result__grid_item kg">&svars3& kg</div>
-                    <div class="result__grid_item rep">&rep3& x</div>
-                </div>
-                </div>`;
+        let val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10,
+            dateKey, dateData;
 
 
         // loop trough localStorage
         for (let i = 0; i < localStorage.length; i++) {
-            // get key from localStorage
+            // get keys from localStorage
             dateKey = localStorage.key(i);
 
             // get all data from localStorage with current key / date
-            // arrays ar inner array-iem
+            // arrays with inner array-iem
             dateData = toLS.getInfoFromLocalStorage(dateKey);
 
             // loop trough current training date object
             for (let j = 0; j < dateData.length; j++) {
+
                 // on document load add data from localStorage to data training array
-                valFullArr = dateData[j];
-                console.log(valFullArr)
                 val0 = dateData[j][0];
                 val1 = dateData[j][1];
                 val2 = dateData[j][2];
@@ -493,11 +581,12 @@ let controller = (function (dataCtrl, UI, toLS) {
 
                 // add data to training array
                 dataCtrl.addTrainDay(val0, val1, val2, val3, val4, val5, val6, val7, val8, val9, val10);
-
-
-                // add data to DOM
-                UI.addExerciseToDom(valFullArr, val1);
             }
+
+            // add data from localStorage to DOM
+            dateData.forEach(function (val) {
+                toLS.fromLStoDOM(val);
+            })
         }
     }
 
