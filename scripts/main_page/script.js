@@ -160,6 +160,7 @@ function removeFromLS(txt) {
 // when page reloads, in local storage stored items are shown in DOM
 function onReloadShowStorage() {
     let dataFromLS = JSON.parse(localStorage.getItem('job-items'));
+    if (!dataFromLS) return;
     dataFromLS.forEach(function (elem) {
         // element what will be added in DOM with current input value
         let element = `<div class="current-item">

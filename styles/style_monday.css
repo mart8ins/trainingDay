@@ -1,0 +1,204 @@
+/* ****************
+FORMA pop UP logĀ
+***************** /
+
+                                                            /* Mondays POP UP styling */
+/* Backgrounds popup logam*/
+#monday-pop {
+  background-color: rgba(65, 120, 159, 0.98);
+}
+
+/* konteineris formai*/
+.mondayForm {
+  background: black;
+  color: white;
+  padding: 5px;
+}
+
+/* konteineris visiem inputiem */
+.formInput {
+  display: inline-block;
+}
+
+/* pašas formas uzstādījums*/
+.mondayForm form {
+  background: rgba(45, 48, 51, 0.8);
+  padding: 5px;
+ 
+}
+
+/* Veiktie vingrinājumi select lauks */
+.vingrinajumuIzvele {
+  font-size: 25px;
+  padding: 5px;
+  position: relative;
+  bottom: 50px;
+}
+
+/* Visu label uzstādījumi*/
+.mondayForm label {
+  padding: 15px;
+  margin-left: 3px;
+  font-size: 18px;
+}
+
+/* Set ... label uzstādījums*/
+.setLabel {
+  font-size: 28px;
+  letter-spacing: 3px;;
+  font-weight: bold;
+}
+
+
+/* Atkārtojumi un Svars*/
+.rep-0,.rep-1,.rep-2,.rep-3,
+.svars-0,.svars-1,.svars-2,.svars-3 {
+  width: 58px;
+  font-size: 18px;
+  padding: 6px;
+}
+
+.svars-0,.svars-1,.svars-2,.svars-3 {
+  width: 70px;
+}
+
+/* Vingrinājuma datums */
+.datumsVingrinajumam {
+  position: relative;
+  bottom: 50px;
+  width: 400px;
+}
+
+/* Submit poga*/
+.formPoga {
+  position: absolute;
+  top: 60px;
+  right: 122px;
+  border: none;
+  padding: 15px;
+  font-size: 29px;
+  letter-spacing: 4px;
+  border-radius: 5px;
+  background: rgba(45, 48, 51, 0.8);
+  color: white;
+  cursor: pointer;
+  box-shadow: 3px 3px 5px white;
+}
+
+.formPoga:hover {
+  background: rgba(45, 48, 51, 0.1);
+  box-shadow: 3px 3px 8px white;
+}
+
+
+/* *********************
+PIEVIENOTIE VINGRINĀJUMI
+************************ /
+
+/* konteineris konkrētai dienai, visiem vingrinājumiem */
+#day__wrapper {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  height: 320px;
+  background: rgba(33, 37, 40, 0.4);
+  overflow: auto;
+}
+
+.vingrinajums__new {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.showWrapper {
+  display: block;
+}
+
+.hideWrapper {
+  display: none;
+}
+
+/* treniņu dienas datums */
+.new__date {
+  font-size: 18px;
+  padding: 5px;
+  letter-spacing: 8px;
+  background: rgba(33, 37, 40, 1);
+  color: white;
+  font-weight: bold;
+  position: absolute;
+z-index: 1;
+  width: 95%;
+}
+
+/* placeholder priekš jauna vingrinājums*/
+
+
+/* pats vingrinājums*/
+.vingrinajuma__box {
+  width: 198px;
+  height: 270px;
+  margin-left: 8px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  background: rgba(33, 37, 40, 1);
+  position: relative;
+  display: inline-block;
+}
+
+
+
+/* exercise name and remove button container */
+.title-and-remove {
+  display: flex;
+}
+
+/* vingrinājuma dzēšans poga */
+.remove-exercise {
+  color: rgba(182, 54, 97,1);
+  width: 10%;
+  align-self: center;
+  padding: 4px;
+  background-color: white;
+}
+.remove-exercise:hover {
+  background-color: rgba(182, 54, 97,1);
+  color: white;
+}
+
+.title-and-remove h4 {
+  font-size: 13px;
+  padding: 4px;
+  width: 90%;
+  text-align: center;
+}
+
+
+/* Image */
+.vingrinajuma__box img {
+  width: 100%;
+  height: 40%;
+}
+
+/* Datu grids */
+.result__grid {
+  display: grid;
+  grid-template-columns: 40% auto;
+  grid-template-rows: 20% 20% 20% 20%;
+  grid-gap: 8px 2px;
+  padding: 2px;
+  
+}
+
+.result__grid_item {
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid white;
+  padding: 3px;
+}
+
+.result__grid_item:hover {
+  background: rgba(33, 37, 40, 0.6);
+}
+

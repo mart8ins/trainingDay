@@ -1,0 +1,140 @@
+/*************************************************************** Main page ********************************************************/
+
+/* Motviation text lines*/
+.linesContainer {
+  overflow: auto; /* nepieciešams, jo iepriekšējie elementi lapā ir ar display: inline; Tas, lai nepārklātos tie*/
+}
+
+.motivation {
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 300px;
+  height: 200px;
+  float: left;
+  text-align: center;
+  font-size: 40px;
+  background-color: rgb(68, 127, 215);
+  margin: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  text-shadow: 5px 5px 10px blue;
+  border: 5px solid rgba(167, 40, 171, 0.3);
+}
+
+/*   Ievads par mani... fake un īstā bilde   */
+
+.aboutMeContainer {
+  margin-top: 5px;
+  border: 6px solid black;
+  background-color: black;
+}
+.aboutMeNot,
+h4 {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.aboutMeNot {
+  border: 2px solid grey;
+}
+
+/* TO DO LIST*/
+.toDoListContainer {
+  margin-top: 10px;
+  height: 500px;
+  background-color: rgba(103, 157, 220  ,1);
+}
+
+.toDoFormContainer, .doList {
+  width: 50%;
+  float: left;
+}
+
+.toDoFormContainer form {
+  margin-top: 60px;
+font-size: 40px;
+text-align: center;
+}
+
+.toDoFormContainer textarea {
+  width: 95%;
+  margin: auto;
+  height: 190px;
+  margin-top: 20px;
+  font-size: 35px;
+  padding: 10px;
+}
+
+.toDoFormContainer input {
+  font-size: 30px;
+  padding: 15px;
+  width: 60%;
+  margin-top: 60px;
+  background-color: rgba(65, 120, 159, 0.6);
+  border: none;
+  border-radius: 10px;
+}
+.toDoFormContainer input:hover {
+cursor: pointer;
+background-color: rgba(65, 120, 159, 1);
+}
+
+.doList {
+  background-color: rgba(231, 231, 247,1);
+  height: 100%;
+}
+.doList h5 {
+  text-align: center;
+  font-size: 25px;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  letter-spacing: 6px;
+}
+
+/* pievienotais to do list darbs*/
+.current-item {
+  width: 445px;
+  margin: auto;
+  position: relative;
+  height: 50px;
+  margin: 10px;
+  box-shadow: 5px 5px 3px black;
+}
+
+.whatToDo {
+  position: relative;
+  height: 100%;
+  width: 400px;
+  background-color: rgba(74, 251, 231,1);
+  padding: 10px;
+  overflow: auto;
+
+}
+/* delete poga*/
+.whatToDo-remove {
+  position: absolute;
+  height: 100%;
+  width: 45px;
+  left: 400px;
+  top: 0;
+  font-size: 30px;
+  text-align: center;
+}
+
+.whatToDo-remove > span {
+  font-size: 35px;
+  text-align: center;
+  position: relative;
+  top: 5px;
+ 
+}
+.whatToDo-remove:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+  color: red;
+}
+
