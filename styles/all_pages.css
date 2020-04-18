@@ -243,7 +243,7 @@ h2 {
 
 
 /* button that opens popup window*/
-#train-progress-button-m, #train-progress-button-w, #train-progress-button-f {
+#train-progress-button-m, #train-progress-button-w {
   font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -260,13 +260,13 @@ h2 {
   
   
 }
-#train-progress-button-m:hover, #train-progress-button-w:hover, #train-progress-button-f:hover {
+#train-progress-button-m:hover, #train-progress-button-w:hover {
   cursor: pointer;
   background-color: white;
 }
 
 /* POP UP WINDOW*/
-#monday-pop, #wednesday-pop, #friday-pop {
+#monday-pop, #wednesday-pop {
   position: absolute;
   display: none;
   left: 50%;
@@ -288,12 +288,12 @@ h2 {
 }
 
 /* POP UP WINDOW CLOSE BUTTON */
-.monday-pop-close, .wednesday-pop-close, .friday-pop-close {
+.monday-pop-close, .wednesday-pop-close {
   position: absolute;
   width: 70px;
-  left: 92%;
+  right: 10px;
   z-index: 3;
-  top: 13px;
+  top: 10px;
   font-size: 17px;
   font-weight: 400;
   padding: 5px;
@@ -307,14 +307,14 @@ h2 {
 }
 
 
-.monday-pop-close:hover, .wednesday-pop-close:hover, .friday-pop-close:hover {
+.monday-pop-close:hover, .wednesday-pop-close:hover {
   cursor: pointer;
   background: rgba(45, 48, 51, 0.1);
   box-shadow: 3px 3px 8px white;
 }
 
 /* close button effect*/
-.monday-pop-close:active, .wednesday-pop-close:active, .friday-pop-close:active {
+.monday-pop-close:active, .wednesday-pop-close:active {
   transform: translateY(2px);
 }
 

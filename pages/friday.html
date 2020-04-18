@@ -25,8 +25,100 @@
 
     <!--  ********************************************* POPUP WINDOW -->
     <div id="friday-pop">
-      <div class="test">sdasdadasd</div>
+      <div class="friday-pop-title">Friday training progress</div>
 
+
+      <div class="mondayForm">
+        <form action="">
+          <!-- 
+            Veiktais vingrinājums
+          -->
+          <div class="exercise__date__container">
+            <div class="formInput exercise__name">
+              <select>
+                <option value="Front squats">Front squats</option>
+                <option value="Bench press">Bench press</option>
+                <option value="Cable front raise">Cable front raise</option>
+                <option value="Triceps row with rope">Triceps row with rope</option>
+                <option value="Hammer curl">Hammer curl</option>
+                <option value="Seated cable row">Seated cable row</option>
+                <option value="Stair mill">Stair mill</option>
+                <option value="Tread mill">Tread mill</option>
+              </select>
+            </div>
+
+            <!--
+            Veiktā vingrinājuma datums
+          -->
+            <div class="formInput exercise__date__container">
+              <label for="exercise__date__input">Date</label>
+              <input type="date" id="exercise__date__input">
+              <br>
+            </div>
+          </div>
+
+          <div class="progress__data">
+            <!--
+            Set labels
+          -->
+            <div class="formInput setLabel">
+              <!-- <label for="repet" class='set-0'>Set 1:</label>
+              <br>
+              <label for="repet" class='set-1'>Set 2:</label>
+              <br>
+              <label for="repet" class='set-3'>Set 3:</label>
+              <br>
+              <label for="repet" class='set-4'>Set 4:</label> -->
+              <select>
+                <option value="Set_1">Set 1:</option>
+                <option value="Set_2">Set 2:</option>
+                <option value="Set_3">Set 3:</option>
+                <option value="Set_4">Set 4:</option>
+              </select>
+            </div>
+
+            <!--
+            Svars
+          -->
+            <div class="formInput weights">
+              <!--<label for="repet">Set 1:</label>-->
+              <label for="svars-0">Weight</label>
+              <input type="number" class="svars-0">
+              <!-- <br>
+              <label for="svars-1">Weight</label>
+              <input type="number" class="svars-1">
+              <br>
+              <label for="svars-2">Weight</label>
+              <input type="number" class="svars-2">
+              <br>
+              <label for="svars-3">Weight</label>
+              <input type="number" class="svars-3"> -->
+            </div>
+
+            <!--
+            Atkārtojumu skaits konkrētajā piegājienā
+          -->
+            <div class="formInput repetitions">
+              <!--<label for="repet">Set 1:</label>-->
+              <label for="rep-0">Repetitions</label>
+              <input type="number" class="rep-0">
+              <!-- <br>
+              <label for="rep-1">repetitions</label>
+              <input type="number" class="rep-1">
+              <br>
+              <label for="rep-2">repetitions</label>
+              <input type="number" class="rep-2">
+              <br>
+              <label for="rep-3">repetitions</label>
+              <input type="number" class="rep-3"> -->
+            </div>
+          </div>
+          <div class="form_btn">
+            <button type="submit">Submit</button>
+          </div>
+
+        </form>
+      </div>
 
 
 
