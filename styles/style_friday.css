@@ -5,7 +5,9 @@ POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
 
 /* Backgrounds popup logam*/
 #friday-pop {
-    background-color: rgba(23, 24, 25, 0.99);
+    background-color: rgba(23, 24, 25, 0.98);
+    background-image: url(../image/weights.jpg);
+    background-size: cover;
 }
 
 
@@ -100,45 +102,45 @@ TITLE IN POPUP WINDOW
 /*********************************************
  FORM CONTAINER 
 *********************************************/
-.mondayForm {
-  background-color: rgba(73, 74, 85, 0.8);
+.fridayForm {
+  background-color: rgba(36, 38, 40, 0.99);
+  /* background-image: url(../image/lift1.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: -20px;
+  position: relative;
 }
-
-.formInput {
-  
-}
-
 
 
 /***************************************
   exercise name and date container
 ************************************  */
-.exercise__date__container {
+.exercise__and__date {
   display: flex;
   justify-content: space-around;
 }
 
 /* exercise name */
-.exercise__name {
+.exercise__name__container {
   padding: 10px;
   
 }
-.exercise__name select {
+.exercise__name__container select {
   font-size: 30px;
   width: 400px;
   padding: 10px;
 }
 
 /* exercise date*/
-.exercise__date__container {
+.exercise__and__date {
   padding: 10px;
 }
-.exercise__date__container input {
+.exercise__and__date input {
   font-size: 30px;
   width: 400px;
   text-align: center;
 }
-.exercise__date__container label {
+.exercise__and__date label {
   font-size: 30px;
   padding: 15px;
   letter-spacing: 3px;
@@ -232,3 +234,132 @@ TITLE IN POPUP WINDOW
 .form_btn:hover button {
   background-color: rgba(47, 83, 153 ,1);
 }
+
+
+/*******************************************
+            train data results
+*******************************************/
+
+/* main container */
+.train__data_container {
+  /* background-image: url(../image/weights.jpg); */
+  margin-top: 30px;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.exercise__date__container {
+  position: relative;
+  background-color: rgba(36, 38, 40, 0.9);
+  width: 90%;
+ 
+  margin: 10px auto;
+  padding-top: 10px;
+}
+
+.exercise__date__new {
+position: relative;
+top: -10px;
+width: 100%;
+font-size: 22px;
+padding: 5px;
+text-transform: uppercase;
+font-weight: bold;
+background-color: rgba(216, 131, 40 ,0.7);
+display: flex;
+}
+
+/* days date */
+.exercise__date__new div:nth-child(1) {
+  width: 97%;
+}
+
+/* days remove btn*/
+.exercise__date__new div:nth-child(2) {
+  width: 3%;
+  font-size: 25px;
+  cursor: pointer;
+  color: rgba(216, 131, 40 ,0.4);
+}
+
+.exercise__date__new:hover div:nth-child(2) {
+  width: 3%;
+  font-size: 25px;
+  color: rgba(216, 131, 40 ,1);
+  transform: scale(1.1);
+}
+
+
+
+/* exercise*/
+.all__exercises {
+  height: 340px;
+  overflow: auto;
+  position: relative;
+}
+
+.exercise__new{
+  width: 250px;
+  height: 290px;
+  margin-left: 11px;
+  margin-bottom: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+
+
+/* container for title and days remove btn*/
+.title__remove__container {
+  display: flex;
+  width: 100%;
+}
+
+/* title */
+.title__remove__container div:nth-child(1) {
+  width: 220px;
+  padding: 5px;
+  color: white;
+  text-align: center;
+  background-color: rgba(216, 131, 40 ,0.7);
+}
+/* remove btn */
+.title__remove__container div:nth-child(2) {
+  width: 30px;
+  padding: 5px;
+  text-align: center;
+  background-color: rgba(132, 126, 118, 0.7);
+  cursor: pointer;
+}
+
+.title__remove__container:hover div:nth-child(2) {
+  transform: scale(1.1);
+  background-color: rgba(132, 126, 118, 0.1);
+}
+
+/* image container */
+.exercise__img{
+  width: 100%;
+  height: 50%;
+  background-size: cover;
+}
+
+/* exercise progress data*/
+/* container*/
+.exercise__progres {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 13% 13% 13% 13% 13%;
+  grid-gap: 8px 3px;
+  background-color: black;
+}
+
+/* grid items */
+.result__grid__item {
+  padding-top: 3px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+}
+
