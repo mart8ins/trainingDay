@@ -253,13 +253,19 @@ TITLE IN POPUP WINDOW
   position: relative;
   background-color: rgba(36, 38, 40, 0.9);
   width: 90%;
-  margin: 10px auto;
-  padding-top: 10px;
+  margin: 0 auto;
+}
+
+.all__exercises {
+  
+  margin-bottom: 20px;
+  height: 390px;
+  overflow: auto;
+  position: relative;
 }
 
 .exercise__date__new {
 position: relative;
-top: -10px;
 width: 100%;
 font-size: 22px;
 padding: 5px;
@@ -268,6 +274,7 @@ font-weight: bold;
 background-color: rgba(216, 131, 40 ,0.7);
 display: flex;
 }
+
 
 /* days date */
 .exercise__date__new div:nth-child(1) {
@@ -290,19 +297,12 @@ display: flex;
 }
 
 
-
 /* exercise*/
-.all__exercises {
-  height: 340px;
-  overflow: auto;
-  position: relative;
-}
-
 .exercise__new{
   width: 250px;
   height: 290px;
-  margin-left: 11px;
-  margin-bottom: 30px;
+  margin: 7px;
+  margin-bottom: 45px;
   position: relative;
   display: inline-block;
 }
@@ -313,6 +313,7 @@ display: flex;
 .title__remove__container {
   display: flex;
   width: 100%;
+  font-size: 14px;
 }
 
 /* title */

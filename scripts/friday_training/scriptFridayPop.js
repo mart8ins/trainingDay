@@ -49,7 +49,7 @@ let buttonController = (function () {
 let dataControler = (function () {
 
     let training = [];
-
+    console.log(training)
     // object for exercise data storing
     let Exercise = function (trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions) {
         this.trainingDay = trainingDay;
@@ -64,6 +64,14 @@ let dataControler = (function () {
     return {
         addDataToTraining: function (trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions) {
             training.push(new Exercise(trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions));
+        },
+
+        trainingDates: function () {
+            let datesArr = [];
+            training.forEach(function (date) {
+                datesArr.push(date.exerciseDate)
+            })
+            return datesArr;
         }
     }
 })();
@@ -93,8 +101,8 @@ let UIcontroler = (function () {
             return Math.floor(Math.random() * 1000);
         },
 
-        exerciseToDom: function (obj, objID) {
-            let exerciseDay, exercise, curImg, training__data__container, childArrIDS, current__training__day;
+        exerciseToDom: function (obj, objID, dates) {
+            let exerciseDay, exercise, curImg, training__data__container, childArrIDS, current__training__day, isThereAnyData;
 
 
             // setting image url to current exercise
@@ -124,11 +132,12 @@ let UIcontroler = (function () {
 
             exerciseDay = `
             <div class="exercise__date__container" id=${obj.exerciseDate}>
+                
+                <div class="all__exercises">
                 <div class="exercise__date__new" >
-                    <div class=exercise__date__value>${obj.exerciseDate}</div>
+                    <div>${obj.exerciseDate}</div>
                     <div class="exercise__date__remove">X</div>
                 </div>
-                <div class="all__exercises">
                     <div class="exercise__new" id=${objID}>
                     <div class="title__remove__container">
                         <div class="exercise__title__data">${obj.exerciseName}</div>
@@ -164,38 +173,43 @@ let UIcontroler = (function () {
                         <div class="result__grid__item">Repetitions</div>
                         <div class="result__grid__item kg">${obj.exerciseWeight} kg</div>
                         <div class="result__grid__item rep">${obj.exerciseRepetitions}</div>
-                        <div class="result__grid__item kg">30 kg</div>
-                        <div class="result__grid__item rep">8</div>
-                        <div class="result__grid__item kg">40 kg</div>
-                        <div class="result__grid__item rep">6</div>
-                        <div class="result__grid__item kg">50 kg</div>
-                        <div class="result__grid__item rep">4</div>
+                        <div class="result__grid__item kg"> kg</div>
+                        <div class="result__grid__item rep"></div>
+                        <div class="result__grid__item kg"> kg</div>
+                        <div class="result__grid__item rep"></div>
+                        <div class="result__grid__item kg"> kg</div>
+                        <div class="result__grid__item rep"></div>
                     </div>
                     </div>
             `
 
-            if (obj.exerciseDate) {
-                // visas treniņdienas
+            isThereAnyData = 0;
+            for (let i = 0; i < dates.length; i++) {
+                if (obj.exerciseDate === dates[i]) {
+                    isThereAnyData = 1;
+                }
+            }
+
+
+            if (isThereAnyData === 1) {
+                // new exercise is added if current date is already existing
                 training__data__container = document.querySelector('.train__data_container').children;
                 childArrIDS = [];
-                // loops lai nostorotu iekš array visu esošo treniņdienu id
                 for (let i of training__data__container) {
                     childArrIDS.push(i.getAttribute('id'));
                 }
                 childArrIDS.forEach(function (id) {
                     if (obj.exerciseDate === id) {
                         current__training__day = document.getElementById(id).children[0];
-                        console.log(current__training__day)
-                        // let bb = current__training__day.children[0].nextElementSibling;
-                        // console.log(bb)
                         current__training__day.insertAdjacentHTML('beforeend', exercise);
                     }
-                })
+                });
+            } else {
+                // new training day is added
+                document.querySelector('.train__data_container').insertAdjacentHTML('afterbegin', exerciseDay);
             }
-
-
-
         }
+
     }
 })();
 
@@ -237,6 +251,8 @@ let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
 
     function addItem(e) {
         e.preventDefault();
+        // array with all existing dates in training array objects
+        let dates = dataCTRL.trainingDates();
 
         // input data from UI controller
         let input = uiCTRL.getInputData();
@@ -251,7 +267,9 @@ let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
         lsCTRL.storeToLS(input);
 
         // add training to dom
-        uiCTRL.exerciseToDom(input, inputID);
+        uiCTRL.exerciseToDom(input, inputID, dates);
+
+
     }
 
 
