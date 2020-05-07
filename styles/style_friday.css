@@ -126,7 +126,7 @@ TITLE IN POPUP WINDOW
   
 }
 .exercise__name__container select {
-  font-size: 30px;
+  font-size: 20px;
   width: 400px;
   padding: 10px;
 }
@@ -136,12 +136,12 @@ TITLE IN POPUP WINDOW
   padding: 10px;
 }
 .exercise__and__date input {
-  font-size: 30px;
+  font-size: 20px;
   width: 400px;
   text-align: center;
 }
 .exercise__and__date label {
-  font-size: 30px;
+  font-size: 20px;
   padding: 15px;
   letter-spacing: 3px;
   background-color: black;
@@ -154,65 +154,34 @@ TITLE IN POPUP WINDOW
  exercise progress data - sets, weight, repetitions container
  *****************************************************/
 .progress__data {
+  width: 95%;
+  margin: auto;
+  height: 210px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-
 
 /* sets */
-.setLabel {
+.formInput {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.formInput h3 {
+  color: red;
   font-size: 30px;
-  width: 180px;
-  padding: 10px;
-  
 }
-.setLabel select {
-  font-size: 25px;
-  height: 100%;
-  padding: 5px;
-  letter-spacing: 5px;
-}
-
-
-/*  weight */
-.weights {
-  padding: 10px;
-  align-self: center;
-}
-.weights label {
-  font-size: 25px;
-  padding: 9px;
-  letter-spacing: 5px;
-  background-color: black;
-  color: white;
-}
-.weights input {
-  font-size: 29px;
-  width: 70px;
+.formInput input {
+  width: 40%;
+  margin: auto;
+  font-size: 40px;
   text-align: center;
-  padding: 4px;
 }
 
 
 
-/* repetitions*/
-.repetitions {
-  padding: 10px;
-  align-self: center;
-}
-.repetitions label {
-  font-size: 25px;
-  padding: 9px;
-  letter-spacing: 5px;
-  background-color: black;
-  color: white;
-}
-.repetitions input {
-  font-size: 29px;
-  width: 70px;
-  text-align: center;
-  padding: 4px;
-}
+
 
 /* submit button */
 .form_btn {
@@ -348,9 +317,11 @@ display: flex;
 /* exercise progress data*/
 /* container*/
 .exercise__progres {
+  height: 160px;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 13% 13% 13% 13% 13%;
+  /* grid-template-rows: 13% ;
+  grid-auto-rows: auto; */
   grid-gap: 8px 3px;
   background-color: black;
 }

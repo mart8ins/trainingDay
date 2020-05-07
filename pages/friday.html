@@ -47,9 +47,9 @@
             </div>
 
             <!--
-            Veiktā vingrinājuma datums
+            Veiktā vingrinājuma input datums
           -->
-            <div class="formInput exercise__and__date">
+            <div class="exercise__and__date">
               <label for="exercise__date__input">Date</label>
               <input type="date" id="exercise__date__input">
               <br>
@@ -57,33 +57,40 @@
           </div>
 
           <div class="progress__data">
-            <!--
-            Set labels
-          -->
-            <div class="formInput setLabel">
-              <select class="setValue">
-                <option value="Set 1">Set 1:</option>
-                <option value="Set 2">Set 2:</option>
-                <option value="Set 3">Set 3:</option>
-                <option value="Set 4">Set 4:</option>
-              </select>
+
+            <div class="formInput">
+              <h3 class="set1">Set 1</h3>
+              <label for="weight-1">Weight</label>
+              <input type="number" id="weight-1">
+              <label for="rep-1">Repetitions</label>
+              <input type="number" id="rep-1">
             </div>
 
-            <!--
-            Svars
-          -->
-            <div class="formInput weights">
-              <label for="svars-0">Weight</label>
-              <input type="number" id="svars-0">
+            <div class="formInput">
+              <h3 class="set2">Set 2</h3>
+              <label for="weight-2">Weight</label>
+              <input type="number" id="weight-2">
+              <label for="rep-2">Repetitions</label>
+              <input type="number" id="rep-2">
             </div>
 
-            <!--
-            Atkārtojumu skaits konkrētajā piegājienā
-          -->
-            <div class="formInput repetitions">
-              <label for="rep-0">Repetitions</label>
-              <input type="number" id="rep-0">
+            <div class="formInput">
+              <h3 class="set3">Set 3</h3>
+              <label for="weight-3">Weight</label>
+              <input type="number" id="weight-3">
+              <label for="rep-3">Repetitions</label>
+              <input type="number" id="rep-3">
             </div>
+
+            <div class="formInput">
+              <h3 class="set4">Set 4</h3>
+              <label for="weight-4">Weight</label>
+              <input type="number" id="weight-4">
+              <label for="rep-4">Repetitions</label>
+              <input type="number" id="rep-4">
+            </div>
+
+
           </div>
           <div class="form_btn">
             <button type="submit" id="form__submit">Submit</button>

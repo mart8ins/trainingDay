@@ -25,22 +25,6 @@ let buttonController = (function () {
 })();
 
 
-{
-    let exercise = {
-        trainingDay: 'Friday',
-        trainingData: {
-            exerciseId: 1,
-            exerciseDate: '2005-05-05',
-            exerciseName: 'squats',
-            exerciseData: {
-                set: 'set 1',
-                weight: 22,
-                repetitions: 8
-            }
-        }
-    }
-}
-
 /**************************************
  * FORM INPUT AND DATA OUTPUT
  * ************************************/
@@ -51,19 +35,48 @@ let dataControler = (function () {
     let training = [];
     console.log(training)
     // object for exercise data storing
-    let Exercise = function (trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions) {
+    let Exercise = function (
+        trainingDay, exerciseId, exerciseDate, exerciseName,
+        set1, weight1, rep1,
+        set2, weight2, rep2,
+        set3, weight3, rep3,
+        set4, weight4, rep4) {
+
         this.trainingDay = trainingDay;
         this.exerciseId = exerciseId;
         this.exerciseDate = exerciseDate;
         this.exerciseName = exerciseName;
-        this.set = set;
-        this.weight = weight;
-        this.repetitions = repetitions;
+
+        this.set1 = set1;
+        this.weight1 = weight1;
+        this.rep1 = rep1;
+
+        this.set2 = set2;
+        this.weight2 = weight2;
+        this.rep2 = rep2;
+
+        this.set3 = set3;
+        this.weight3 = weight3;
+        this.rep3 = rep3;
+
+        this.set4 = set4;
+        this.weight4 = weight4;
+        this.rep4 = rep4;
     }
 
     return {
-        addDataToTraining: function (trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions) {
-            training.push(new Exercise(trainingDay, exerciseId, exerciseDate, exerciseName, set, weight, repetitions));
+        addDataToTraining: function (
+            trainingDay, exerciseId, exerciseDate, exerciseName,
+            set1, weight1, rep1,
+            set2, weight2, rep2,
+            set3, weight3, rep3,
+            set4, weight4, rep4) {
+            training.push(new Exercise(
+                trainingDay, exerciseId, exerciseDate, exerciseName,
+                set1, weight1, rep1,
+                set2, weight2, rep2,
+                set3, weight3, rep3,
+                set4, weight4, rep4));
         },
 
         trainingDates: function () {
@@ -89,9 +102,18 @@ let UIcontroler = (function () {
                 exerciseId: UIcontroler.createID(),
                 exerciseDate: document.getElementById('exercise__date__input').value,
                 exerciseName: document.querySelector('.exercise__name').value,
-                exerciseSet: document.querySelector('.setValue').value,
-                exerciseWeight: document.getElementById('svars-0').value,
-                exerciseRepetitions: document.getElementById('rep-0').value,
+                exSet1: document.querySelector('.set1').innerHTML,
+                exSet2: document.querySelector('.set2').innerHTML,
+                exSet3: document.querySelector('.set3').innerHTML,
+                exSet4: document.querySelector('.set4').innerHTML,
+                exWeight1: document.getElementById('weight-1').value,
+                exWeight2: document.getElementById('weight-2').value,
+                exWeight3: document.getElementById('weight-3').value,
+                exWeight4: document.getElementById('weight-4').value,
+                exRep1: document.getElementById('rep-1').value,
+                exRep2: document.getElementById('rep-2').value,
+                exRep3: document.getElementById('rep-3').value,
+                exRep4: document.getElementById('rep-4').value
                 // exerciseimg: document.querySelector('.exercise__img').value
 
             }
@@ -101,8 +123,9 @@ let UIcontroler = (function () {
             return Math.floor(Math.random() * 1000);
         },
 
-        exerciseToDom: function (obj, objID, dates) {
-            let exerciseDay, exercise, curImg, training__data__container, childArrIDS, current__training__day, isThereAnyData;
+        exerciseToDom: function (obj, objID, dates, Names) {
+            let exerciseDay, exercise, curImg, training__data__container, childArrIDS,
+                current__training__day, isThereAnyData;
 
 
             // setting image url to current exercise
@@ -147,14 +170,14 @@ let UIcontroler = (function () {
                     <div class="exercise__progres">
                         <div class="result__grid__item">Weight</div>
                         <div class="result__grid__item">Repetitions</div>
-                        <div class="result__grid__item kg">${obj.exerciseWeight} kg</div>
-                        <div class="result__grid__item rep">${obj.exerciseRepetitions} x</div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
+                        <div class="result__grid__item kg">${obj.exWeight1} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep1} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight2} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep2} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight3} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep3} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight4} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep4} x</div>
                     </div>
                     </div>
                 </div>
@@ -171,45 +194,47 @@ let UIcontroler = (function () {
                     <div class="exercise__progres">
                         <div class="result__grid__item">Weight</div>
                         <div class="result__grid__item">Repetitions</div>
-                        <div class="result__grid__item kg">${obj.exerciseWeight} kg</div>
-                        <div class="result__grid__item rep">${obj.exerciseRepetitions}</div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
-                        <div class="result__grid__item kg"> kg</div>
-                        <div class="result__grid__item rep"></div>
+                        <div class="result__grid__item kg">${obj.exWeight1} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep1} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight2} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep2} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight3} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep3} x</div>
+                        <div class="result__grid__item kg">${obj.exWeight4} kg</div>
+                        <div class="result__grid__item rep">${obj.exRep4} x</div>
                     </div>
                     </div>
             `
 
-            isThereAnyData = 0;
-            for (let i = 0; i < dates.length; i++) {
-                if (obj.exerciseDate === dates[i]) {
-                    isThereAnyData = 1;
-                }
-            }
-
-
-            if (isThereAnyData === 1) {
-                // new exercise is added if current date is already existing
-                training__data__container = document.querySelector('.train__data_container').children;
-                childArrIDS = [];
-                for (let i of training__data__container) {
-                    childArrIDS.push(i.getAttribute('id'));
-                }
-                childArrIDS.forEach(function (id) {
-                    if (obj.exerciseDate === id) {
-                        current__training__day = document.getElementById(id).children[0];
-                        current__training__day.insertAdjacentHTML('beforeend', exercise);
+            if (obj.exerciseDate) { // checks if input date exists when user whants to add training info
+                isThereAnyData = 0;
+                for (let i = 0; i < dates.length; i++) {
+                    if (obj.exerciseDate === dates[i]) {
+                        isThereAnyData = 1;
                     }
-                });
-            } else {
-                // new training day is added
-                document.querySelector('.train__data_container').insertAdjacentHTML('afterbegin', exerciseDay);
+                }
+
+                if (isThereAnyData === 1) {
+                    // new exercise to current date is added if current date is already existing
+                    training__data__container = document.querySelector('.train__data_container').children;
+                    childArrIDS = [];
+                    // existing training days ID is pushed in childArrIDS, ID is the date, example 2020-04-30
+                    for (let i of training__data__container) {
+                        childArrIDS.push(i.getAttribute('id'));
+                    }
+                    // in that current dates object is added new exercise
+                    childArrIDS.forEach(function (id) {
+                        if (obj.exerciseDate === id) {
+                            current__training__day = document.getElementById(id).children[0];
+                            current__training__day.insertAdjacentHTML('beforeend', exercise);
+                        }
+                    });
+                } else {
+                    // new training day/date is added
+                    document.querySelector('.train__data_container').insertAdjacentHTML('afterbegin', exerciseDay);
+                }
             }
         }
-
     }
 })();
 
@@ -238,6 +263,10 @@ let LScontroler = (function () {
             trainStorage.push(val);
             localStorage.setItem('training', JSON.stringify(trainStorage));
 
+        },
+
+        dataFromLsOnLoad: function () {
+
         }
     }
 })();
@@ -249,6 +278,7 @@ let LScontroler = (function () {
 /********************************** */
 let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
 
+    // add input to data controler, localStorage and DOM
     function addItem(e) {
         e.preventDefault();
         // array with all existing dates in training array objects
@@ -257,19 +287,28 @@ let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
         // input data from UI controller
         let input = uiCTRL.getInputData();
 
-        // created exercise ID
+        // created new exercise ID
         let inputID = uiCTRL.createID();
 
+
         // storing input data with construcotr function in data array training
-        dataCTRL.addDataToTraining(input.exerciseDay, inputID, input.exerciseDate, input.exerciseName, input.exerciseSet, input.exerciseWeight, input.exerciseRepetitions);
+        dataCTRL.addDataToTraining(
+            input.exerciseDay, inputID, input.exerciseDate, input.exerciseName,
+            input.exSet1, input.exWeight1, input.exRep1,
+            input.exSet2, input.exWeight2, input.exRep2,
+            input.exSet3, input.exWeight3, input.exRep3,
+            input.exSet4, input.exWeight4, input.exRep4);
 
         // storing this data to localStorage
         lsCTRL.storeToLS(input);
 
         // add training to dom
         uiCTRL.exerciseToDom(input, inputID, dates);
+    }
 
-
+    // get data from localStorage to DOM on page reload
+    function dataOnLoad() {
+        lsCTRL.dataFromLsOnLoad();
     }
 
 
@@ -278,6 +317,8 @@ let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
     let eventListeners = function () {
         let sumbitbtn = document.getElementById('form__submit');
         sumbitbtn.addEventListener('click', addItem);
+
+        document.addEventListener('DOMContentLoaded', dataOnLoad);
     }
 
     return {
