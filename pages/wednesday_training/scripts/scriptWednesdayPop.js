@@ -193,7 +193,7 @@ let UIcontroler = (function () {
                                             <div class="exercise__title__data">${obj.exerciseName}</div>
                                             <div class="exercise__remove">X</div>
                                         </div>
-                                        <div class="exercise__img" style="background-image: url(../image/wednesday/${curImg}.jpg)"></div>
+                                        <div class="exercise__img" style="background-image: url(../../image/wednesday/${curImg}.jpg)"></div>
                                         <div class="exercise__progres">
                                             <div class="result__grid__item">Weight</div>
                                             <div class="result__grid__item">Repetitions</div>
@@ -217,7 +217,7 @@ let UIcontroler = (function () {
                                             <div class="exercise__title__data">${obj.exerciseName}</div>
                                             <div class="exercise__remove">X</div>
                                         </div>
-                                        <div class="exercise__img" style="background-image: url(../image/wednesday/${curImg}.jpg)"></div>
+                                        <div class="exercise__img" style="background-image: url(../../image/wednesday/${curImg}.jpg)"></div>
                                         <div class="exercise__progres">
                                             <div class="result__grid__item">Weight</div>
                                             <div class="result__grid__item">Repetitions</div>
@@ -356,7 +356,7 @@ let LScontroler = (function () {
                                     <div class="exercise__title__data">${exeName}</div>
                                     <div class="exercise__remove">X</div>
                                 </div>
-                                <div class="exercise__img" style="background-image: url(../image/wednesday/${curImg}.jpg)"></div>
+                                <div class="exercise__img" style="background-image: url(../../image/wednesday/${curImg}.jpg)"></div>
                                 <div class="exercise__progres">
                                     <div class="result__grid__item">Weight</div>
                                     <div class="result__grid__item">Repetitions</div>
@@ -380,7 +380,7 @@ let LScontroler = (function () {
                                         <div class="exercise__title__data">${exeName}</div>
                                         <div class="exercise__remove">X</div>
                                     </div>
-                                    <div class="exercise__img" style="background-image: url(../image/wednesday/${curImg}.jpg)"></div>
+                                    <div class="exercise__img" style="background-image: url(../../image/wednesday/${curImg}.jpg)"></div>
                                     <div class="exercise__progres">
                                         <div class="result__grid__item">Weight</div>
                                         <div class="result__grid__item">Repetitions</div>

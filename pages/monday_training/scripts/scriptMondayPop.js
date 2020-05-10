@@ -144,7 +144,7 @@ let UIinput = (function () {
                     <p class="remove-exercise">X</p>
                     </div>
 
-                    <img src="../image/monday/%image%.jpg" alt="">
+                    <img src="../../image/monday/%image%.jpg" alt="">
                     <div class="result__grid">
                       <div class="result__grid_item kg">&svars0& kg</div>
                       <div class="result__grid_item rep">&rep0& x</div>
@@ -168,7 +168,7 @@ let UIinput = (function () {
                         <p class="remove-exercise">X</p>
                         </div>
 
-                       <img src="../image/monday/%image%.jpg" alt="">
+                       <img src="../../image/monday/%image%.jpg" alt="">
                        <div class="result__grid">
                          <div class="result__grid_item kg">&svars0& kg</div>
                          <div class="result__grid_item rep">&rep0& x</div>
@@ -362,7 +362,7 @@ let localStorageControl = (function () {
                         <p class="remove-exercise">X</p>
                         </div>
 
-                       <img src="../image/monday/${curImg}.jpg" alt="">
+                       <img src="../../image/monday/${curImg}.jpg" alt="">
                        <div class="result__grid">
                             <div class="result__grid_item kg">${obj[3]} kg</div>
                             <div class="result__grid_item rep">${obj[7]} x</div>
@@ -387,7 +387,7 @@ let localStorageControl = (function () {
                         <p class="remove-exercise">X</p>
                         </div>
 
-                        <img src="../image/monday/${curImg}.jpg" alt="">
+                        <img src="../../image/monday/${curImg}.jpg" alt="">
                         <div class="result__grid">
                         <div class="result__grid_item kg">${obj[3]} kg</div>
                         <div class="result__grid_item rep">${obj[7]} x</div>
@@ -403,75 +403,6 @@ let localStorageControl = (function () {
                     </div>`;
                 document.querySelector('.days__container').insertAdjacentHTML('afterbegin', htmlFull);
             }
-
-
-
-
-
-            //vingrinājuma konteineris
-            // htmlTrain = `<div class='vingrinajums__new' id=%idVal%>
-            //          <div class="vingrinajuma__box">
-
-            //             <div class="title-and-remove">
-            //             <h4>&vingrinajumi&</h4>
-            //             <p class="remove-exercise">X</p>
-            //             </div>
-
-            //            <img src="../image/monday/%image%.jpg" alt="">
-            //            <div class="result__grid">
-            //              <div class="result__grid_item kg">&svars0& kg</div>
-            //              <div class="result__grid_item rep">&rep0& x</div>
-            //              <div class="result__grid_item kg">&svars1& kg</div>
-            //              <div class="result__grid_item rep">&rep1& x</div>
-            //              <div class="result__grid_item kg">&svars2& kg</div>
-            //              <div class="result__grid_item rep">&rep2& x</div>
-            //              <div class="result__grid_item kg">&svars3& kg</div>
-            //              <div class="result__grid_item rep">&rep3& x</div>
-            //            </div>
-            //          </div>`;
-
-
-            // if (date) {
-            //     newHtmlTrain = htmlTrain.replace('&vingrinajumi&', obj[2]);
-            //     switch (obj[2]) {
-            //         case 'Front squats':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'frontSquats');
-            //             break;
-            //         case 'Bench press':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'benchpress');
-            //             break;
-            //         case 'Cable front raise':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'frontDeltoidRaise');
-            //             break;
-            //         case 'Hammer curl':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'hammerCurl');
-            //             break;
-            //         case 'Seated cable row':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'seatedCableRow');
-            //             break;
-            //         case 'Triceps row with rope':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'triceps_row');
-            //             break;
-            //         case 'Stair mill':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'stairmill');
-            //             break;
-            //         case 'Tread mill':
-            //             newHtmlTrain = newHtmlTrain.replace('%image%', 'treadmill');
-            //             break;
-            //     };
-            //     newHtmlTrain = newHtmlTrain.replace('%idVal%', obj[0]);
-            //     newHtmlTrain = newHtmlTrain.replace('&svars0&', obj[3]);
-            //     newHtmlTrain = newHtmlTrain.replace('&svars1&', obj[4]);
-            //     newHtmlTrain = newHtmlTrain.replace('&svars2&', obj[5]);
-            //     newHtmlTrain = newHtmlTrain.replace('&svars3&', obj[6]);
-            //     newHtmlTrain = newHtmlTrain.replace('&rep0&', obj[7]);
-            //     newHtmlTrain = newHtmlTrain.replace('&rep1&', obj[8]);
-            //     newHtmlTrain = newHtmlTrain.replace('&rep2&', obj[9]);
-            //     newHtmlTrain = newHtmlTrain.replace('&rep3&', obj[10]);
-            //     document.querySelector('#day__wrapper').insertAdjacentHTML('beforeend', newHtmlTrain);
-            // }
-
-
         }
     }
 })();

@@ -6,7 +6,7 @@ POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
 /* Backgrounds popup logam*/
 #wednesday-pop {
   background-color: rgba(23, 24, 25, 0.98);
-  background-image: url(../image/weights.jpg);
+  background-image: url(../../image/weights.jpg);
   background-size: cover;
   position: absolute;
   width: 100%;
