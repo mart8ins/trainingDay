@@ -37,7 +37,7 @@ POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
 /* POP UP WINDOW*/
 #friday-pop {
   position: fixed;
-  display: none;
+  display: block; /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! uzlikt un NONE*/
   left: 0;
   top: 0;
   width: 100%;
@@ -222,16 +222,16 @@ TITLE IN POPUP WINDOW
   position: relative;
   background-color: rgba(36, 38, 40, 0.9);
   width: 90%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
-.all__exercises {
+/* .all__exercises {
   
   margin-bottom: 20px;
   height: 390px;
   overflow: auto;
   position: relative;
-}
+} */
 
 .exercise__date__new {
 position: relative;
@@ -269,7 +269,7 @@ display: flex;
 /* exercise*/
 .exercise__new{
   width: 250px;
-  height: 290px;
+  height: 320px;
   margin: 7px;
   margin-bottom: 45px;
   position: relative;
@@ -317,7 +317,7 @@ display: flex;
 /* exercise progress data*/
 /* container*/
 .exercise__progres {
-  height: 160px;
+  height: 165px;
   display: grid;
   grid-template-columns: 50% 50%;
   /* grid-template-rows: 13% ;
@@ -328,9 +328,9 @@ display: flex;
 
 /* grid items */
 .result__grid__item {
-  padding-top: 3px;
+  padding-top: 5px;
   text-align: center;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 12px;
 }
 

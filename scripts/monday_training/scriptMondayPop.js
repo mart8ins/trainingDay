@@ -353,9 +353,6 @@ let localStorageControl = (function () {
                 dayID = aa.childNodes[1].getAttribute('id');
             }
 
-
-
-
             if (dayID === obj[1]) {
                 htmlTrain = `<div class='vingrinajums__new' id=${obj[0]}>
                      <div class="vingrinajuma__box">

@@ -67,16 +67,16 @@ let dataControler = (function () {
     return {
         addDataToTraining: function (
             trainingDay, exerciseId, exerciseDate, exerciseName,
-            set1, weight1, rep1,
-            set2, weight2, rep2,
-            set3, weight3, rep3,
-            set4, weight4, rep4) {
+            weight1, rep1,
+            weight2, rep2,
+            weight3, rep3,
+            weight4, rep4) {
             training.push(new Exercise(
                 trainingDay, exerciseId, exerciseDate, exerciseName,
-                set1, weight1, rep1,
-                set2, weight2, rep2,
-                set3, weight3, rep3,
-                set4, weight4, rep4));
+                weight1, rep1,
+                weight2, rep2,
+                weight3, rep3,
+                weight4, rep4));
         },
 
         trainingDates: function () {
@@ -85,7 +85,15 @@ let dataControler = (function () {
                 datesArr.push(date.exerciseDate)
             })
             return datesArr;
-        }
+        },
+
+        returnExerciseIDs: function () {
+            let arrIDs = [];
+            training.forEach(function (val, i) {
+                arrIDs.push(val.exerciseId)
+            });
+            return arrIDs;
+        },
     }
 })();
 
@@ -102,10 +110,10 @@ let UIcontroler = (function () {
                 exerciseId: UIcontroler.createID(),
                 exerciseDate: document.getElementById('exercise__date__input').value,
                 exerciseName: document.querySelector('.exercise__name').value,
-                exSet1: document.querySelector('.set1').innerHTML,
-                exSet2: document.querySelector('.set2').innerHTML,
-                exSet3: document.querySelector('.set3').innerHTML,
-                exSet4: document.querySelector('.set4').innerHTML,
+                // exSet1: document.querySelector('.set1').innerHTML,
+                // exSet2: document.querySelector('.set2').innerHTML,
+                // exSet3: document.querySelector('.set3').innerHTML,
+                // exSet4: document.querySelector('.set4').innerHTML,
                 exWeight1: document.getElementById('weight-1').value,
                 exWeight2: document.getElementById('weight-2').value,
                 exWeight3: document.getElementById('weight-3').value,
@@ -114,17 +122,29 @@ let UIcontroler = (function () {
                 exRep2: document.getElementById('rep-2').value,
                 exRep3: document.getElementById('rep-3').value,
                 exRep4: document.getElementById('rep-4').value
-                // exerciseimg: document.querySelector('.exercise__img').value
-
             }
         },
-        // create ID for current Input data
-        createID: function () {
-            return Math.floor(Math.random() * 1000);
+        // create unique ID for current Input data
+        createID: function (ids) {
+            let cur, arr;
+            arr = ids;
+            cur = Math.floor(Math.random() * 1000);
+            if (arr) {
+                // cheking if ID already exists if it does, generate new
+                for (let i = 0; i <= arr.length; i++) {
+                    if (cur === arr[i]) {
+                        cur = Math.floor(Math.random() * 1000);
+                    } else {
+                        return cur;
+                    }
+                }
+            }
+            return cur;
+
         },
 
         exerciseToDom: function (obj, objID, dates, Names) {
-            let exerciseDay, exercise, curImg, training__data__container, childArrIDS,
+            let exerciseFull, newExercise, curImg, training__data__container, childArrIDS,
                 current__training__day, isThereAnyData;
 
 
@@ -153,57 +173,59 @@ let UIcontroler = (function () {
                     break;
             }
 
-            exerciseDay = `
+            // pilns exercise!
+            exerciseFull = `
             <div class="exercise__date__container" id=${obj.exerciseDate}>
-                
-                <div class="all__exercises">
-                <div class="exercise__date__new" >
-                    <div>${obj.exerciseDate}</div>
-                    <div class="exercise__date__remove">X</div>
-                </div>
-                    <div class="exercise__new" id=${objID}>
-                    <div class="title__remove__container">
-                        <div class="exercise__title__data">${obj.exerciseName}</div>
-                        <div class="exercise__remove">X</div>
-                    </div>
-                    <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
-                    <div class="exercise__progres">
-                        <div class="result__grid__item">Weight</div>
-                        <div class="result__grid__item">Repetitions</div>
-                        <div class="result__grid__item kg">${obj.exWeight1} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep1} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight2} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep2} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight3} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep3} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight4} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep4} x</div>
-                    </div>
-                    </div>
-                </div>
-        </div>
-            `
 
-            exercise = `
-                <div class="exercise__new" id=${objID}>
-                    <div class="title__remove__container">
-                        <div class="exercise__title__data">${obj.exerciseName}</div>
-                        <div class="exercise__remove">X</div>
-                    </div>
-                    <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
-                    <div class="exercise__progres">
-                        <div class="result__grid__item">Weight</div>
-                        <div class="result__grid__item">Repetitions</div>
-                        <div class="result__grid__item kg">${obj.exWeight1} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep1} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight2} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep2} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight3} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep3} x</div>
-                        <div class="result__grid__item kg">${obj.exWeight4} kg</div>
-                        <div class="result__grid__item rep">${obj.exRep4} x</div>
-                    </div>
-                    </div>
+                                    <div class="exercise__date__new">
+                                    <div class=exercise__date__value>${obj.exerciseDate}</div>
+                                    <div class="exercise__date__remove">X</div>
+                                    </div>
+  
+            <!-- **************************************** exercise  *********************************************-->
+                                    <div class="exercise__new" id=${objID}>
+                                        <div class="title__remove__container">
+                                            <div class="exercise__title__data">${obj.exerciseName}</div>
+                                            <div class="exercise__remove">X</div>
+                                        </div>
+                                        <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
+                                        <div class="exercise__progres">
+                                            <div class="result__grid__item">Weight</div>
+                                            <div class="result__grid__item">Repetitions</div>
+                                            <div class="result__grid__item kg">${obj.exWeight1} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep1} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight2} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep2} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight3} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep3} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight4} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep4} x</div>
+                                        </div>
+                                    </div>
+  
+             </div>`
+
+
+            newExercise = `
+                                    <div class="exercise__new" id=${objID}>
+                                        <div class="title__remove__container">
+                                            <div class="exercise__title__data">${obj.exerciseName}</div>
+                                            <div class="exercise__remove">X</div>
+                                        </div>
+                                        <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
+                                        <div class="exercise__progres">
+                                            <div class="result__grid__item">Weight</div>
+                                            <div class="result__grid__item">Repetitions</div>
+                                            <div class="result__grid__item kg">${obj.exWeight1} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep1} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight2} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep2} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight3} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep3} x</div>
+                                            <div class="result__grid__item kg">${obj.exWeight4} kg</div>
+                                            <div class="result__grid__item rep">${obj.exRep4} x</div>
+                                        </div>
+                                    </div>
             `
 
             if (obj.exerciseDate) { // checks if input date exists when user whants to add training info
@@ -216,7 +238,7 @@ let UIcontroler = (function () {
 
                 if (isThereAnyData === 1) {
                     // new exercise to current date is added if current date is already existing
-                    training__data__container = document.querySelector('.train__data_container').children;
+                    training__data__container = document.querySelector('.train__data__container').children;
                     childArrIDS = [];
                     // existing training days ID is pushed in childArrIDS, ID is the date, example 2020-04-30
                     for (let i of training__data__container) {
@@ -225,13 +247,14 @@ let UIcontroler = (function () {
                     // in that current dates object is added new exercise
                     childArrIDS.forEach(function (id) {
                         if (obj.exerciseDate === id) {
-                            current__training__day = document.getElementById(id).children[0];
-                            current__training__day.insertAdjacentHTML('beforeend', exercise);
+                            current__training__day = document.getElementById(id).children[1];
+                            console.log(current__training__day)
+                            current__training__day.insertAdjacentHTML('beforebegin', newExercise);
                         }
                     });
                 } else {
                     // new training day/date is added
-                    document.querySelector('.train__data_container').insertAdjacentHTML('afterbegin', exerciseDay);
+                    document.querySelector('.train__data__container').insertAdjacentHTML('afterbegin', exerciseFull);
                 }
             }
         }
@@ -239,7 +262,7 @@ let UIcontroler = (function () {
 })();
 
 // document.querySelector('.all__exercises').insertAdjacentHTML('afterbegin', exercise);
-// document.querySelector('.train__data_container').insertAdjacentHTML('beforeend', exerciseDay);
+// document.querySelector('.train__data__container').insertAdjacentHTML('beforeend', exerciseDay);
 
 /************************************ */
 // CONTROLER FOR DATA IN LOCAL STORAGE
@@ -266,12 +289,126 @@ let LScontroler = (function () {
         },
 
         dataFromLsOnLoad: function () {
+            let exeDay, exeId, exeDate, exeName, exWeight1, exWeight2, exWeight3, exWeight4, exRep1, exRep2, exRep3, exRep4, exerciseFull, exercise
+            let trainStorage = LScontroler.getFromLS();
 
+            trainStorage.forEach(val => {
+                exeDay = val.exerciseDay;
+                exeId = val.exerciseId;
+                exeDate = val.exerciseDate;
+                exeName = val.exerciseName;
+                exWeight1 = val.exWeight1;
+                exWeight2 = val.exWeight2;
+                exWeight3 = val.exWeight3;
+                exWeight4 = val.exWeight4;
+                exRep1 = val.exRep1;
+                exRep2 = val.exRep2;
+                exRep3 = val.exRep3;
+                exRep4 = val.exRep4;
+
+                if (exeDay === 'Friday') {
+                    switch (exeName) {
+                        case 'Arms barbell':
+                            curImg = 'armsbarbell';
+                            break;
+                        case 'Chest cable pull down':
+                            curImg = 'chest_cable_down';
+                            break;
+                        case 'Chest cable pull up':
+                            curImg = 'chest_cable_up';
+                            break;
+                        case 'Deadlift':
+                            curImg = 'deadlift';
+                            break;
+                        case 'Overhead press':
+                            curImg = 'overhead';
+                            break;
+                        case 'Shoulder pull back':
+                            curImg = 'shoulder_back';
+                            break;
+                        case 'Triceps cable row behind head':
+                            curImg = 'triceps_row_behind';
+                            break;
+                    }
+
+                    exerciseFull = `
+                        <div class="exercise__date__container" id=${exeDate}>
+        
+                            <div class="exercise__date__new">
+                                <div class=exercise__date__value>${exeDate}</div>
+                                <div class="exercise__date__remove">X</div>
+                            </div>
+            
+                            <!-- **************************************** exercise  *********************************************-->
+                            <div class="exercise__new" id=${exeId}>
+                                <div class="title__remove__container">
+                                    <div class="exercise__title__data">${exeName}</div>
+                                    <div class="exercise__remove">X</div>
+                                </div>
+                                <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
+                                <div class="exercise__progres">
+                                    <div class="result__grid__item">Weight</div>
+                                    <div class="result__grid__item">Repetitions</div>
+                                    <div class="result__grid__item kg">${exWeight1} kg</div>
+                                    <div class="result__grid__item rep">${exRep1} x</div>
+                                    <div class="result__grid__item kg">${exWeight2} kg</div>
+                                    <div class="result__grid__item rep">${exRep2} x</div>
+                                    <div class="result__grid__item kg">${exWeight3} kg</div>
+                                    <div class="result__grid__item rep">${exRep3} x</div>
+                                    <div class="result__grid__item kg">${exWeight4} kg</div>
+                                    <div class="result__grid__item rep">${exRep4} x</div>
+                                </div>
+                            </div>
+        
+                        </div>
+                                `
+
+                    exercise = `
+                        <div class="exercise__new" id=${exeId}>
+                                    <div class="title__remove__container">
+                                        <div class="exercise__title__data">${exeName}</div>
+                                        <div class="exercise__remove">X</div>
+                                    </div>
+                                    <div class="exercise__img" style="background-image: url(../image/friday/${curImg}.jpg)"></div>
+                                    <div class="exercise__progres">
+                                        <div class="result__grid__item">Weight</div>
+                                        <div class="result__grid__item">Repetitions</div>
+                                        <div class="result__grid__item kg">${exWeight1} kg</div>
+                                        <div class="result__grid__item rep">${exRep1} x</div>
+                                        <div class="result__grid__item kg">${exWeight2} kg</div>
+                                        <div class="result__grid__item rep">${exRep2} x</div>
+                                        <div class="result__grid__item kg">${exWeight3} kg</div>
+                                        <div class="result__grid__item rep">${exRep3} x</div>
+                                        <div class="result__grid__item kg">${exWeight4} kg</div>
+                                        <div class="result__grid__item rep">${exRep4} x</div>
+                                    </div>
+                         </div>
+                            `
+
+                    let dataContainer = document.querySelector('.train__data__container').children[0];
+
+
+
+                    if (dataContainer === undefined) {
+                        document.querySelector('.train__data__container').insertAdjacentHTML('afterbegin', exerciseFull);
+                        return;
+                    }
+
+                    if (dataContainer) {
+                        let id = dataContainer.getAttribute('id');
+                        if (id === exeDate) {
+                            document.querySelector('.exercise__date__new').insertAdjacentHTML('afterend', exercise);
+                        } else {
+                            document.querySelector('.train__data__container').insertAdjacentHTML('afterbegin', exerciseFull);
+                        }
+                    }
+                }
+            })
         }
     }
 })();
 
-
+// document.querySelector('.exercise__date__new').insertAdjacentHTML('afterend', exercise);
 
 /********************************* */
 // MAIN CONTROLLER
@@ -287,17 +424,21 @@ let controler = (function (dataCTRL, uiCTRL, lsCTRL) {
         // input data from UI controller
         let input = uiCTRL.getInputData();
 
-        // created new exercise ID
-        let inputID = uiCTRL.createID();
 
+        // return existing exercise data IDs
+        let exIDs = dataCTRL.returnExerciseIDs();
+
+
+        // created new exercise ID
+        let inputID = uiCTRL.createID(exIDs);
 
         // storing input data with construcotr function in data array training
         dataCTRL.addDataToTraining(
             input.exerciseDay, inputID, input.exerciseDate, input.exerciseName,
-            input.exSet1, input.exWeight1, input.exRep1,
-            input.exSet2, input.exWeight2, input.exRep2,
-            input.exSet3, input.exWeight3, input.exRep3,
-            input.exSet4, input.exWeight4, input.exRep4);
+            input.exWeight1, input.exRep1,
+            input.exWeight2, input.exRep2,
+            input.exWeight3, input.exRep3,
+            input.exWeight4, input.exRep4);
 
         // storing this data to localStorage
         lsCTRL.storeToLS(input);
