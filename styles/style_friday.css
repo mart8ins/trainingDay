@@ -8,6 +8,7 @@ POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
     background-color: rgba(23, 24, 25, 0.98);
     background-image: url(../image/weights.jpg);
     background-size: cover;
+    position: absolute;
 }
 
 
@@ -37,7 +38,7 @@ POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
 /* POP UP WINDOW*/
 #friday-pop {
   position: fixed;
-  display: block; /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! uzlikt un NONE*/
+  display: none; /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! uzlikt un NONE*/
   left: 0;
   top: 0;
   width: 100%;
@@ -102,79 +103,67 @@ TITLE IN POPUP WINDOW
 /*********************************************
  FORM CONTAINER 
 *********************************************/
-.fridayForm {
-  background-color: rgba(36, 38, 40, 0.99);
+.fridayForm form {
+  background-color: rgba(36, 38, 40, 0.59);
   /* background-image: url(../image/lift1.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: -20px;
+
   position: relative;
+  display: flex;
 }
 
 
 /***************************************
-  exercise name and date container
+  exercise name and date input container 
 ************************************  */
 .exercise__and__date {
-  display: flex;
-  justify-content: space-around;
+  background-color: rgba(36, 138, 40, 0.2) ;
+  padding: 30px;
 }
-
-/* exercise name */
 .exercise__name__container {
-  padding: 10px;
-  
+padding: 15px;
 }
+/* exercise name */
 .exercise__name__container select {
-  font-size: 20px;
+  font-size: 26px;
   width: 400px;
   padding: 10px;
 }
 
 /* exercise date*/
-.exercise__and__date {
-  padding: 10px;
-}
-.exercise__and__date input {
-  font-size: 20px;
-  width: 400px;
+#exercise__date__input {
+  font-size: 25px;
+  width: 300px;
   text-align: center;
+  margin-left: 60px;
 }
-.exercise__and__date label {
-  font-size: 20px;
-  padding: 15px;
-  letter-spacing: 3px;
-  background-color: black;
-  color: white;
-}
-
 
 
 /*****************************************************
  exercise progress data - sets, weight, repetitions container
  *****************************************************/
 .progress__data {
-  width: 95%;
-  margin: auto;
-  height: 210px;
+  width: 45%;
   display: flex;
   justify-content: space-evenly;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* sets */
-.formInput {
-  width: 20%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
+/* sets label */
 .formInput h3 {
   color: red;
-  font-size: 30px;
+  font-size: 25px;
 }
-.formInput input {
-  width: 40%;
-  margin: auto;
+
+.progress__data .formInput {
+margin: 0 auto;
+padding: 5px;
+}
+
+.progress__data .formInput input {
+  width: 110px;
   font-size: 40px;
   text-align: center;
 }
@@ -182,14 +171,17 @@ TITLE IN POPUP WINDOW
 
 
 
-
-/* submit button */
+/*****************************************************
+ submit button
+ *****************************************************/
 .form_btn {
-  width: 250px;
-  margin: 20px auto;
+  width: 150px;
+  margin: auto;
+  margin-left: -50px;
 }
 .form_btn button {
-  font-size: 45px;
+  font-size: 35px;
+  padding: 10px;
   letter-spacing: 4px;
   width: 100%;
   margin: 15px;
@@ -209,6 +201,13 @@ TITLE IN POPUP WINDOW
             train data results
 *******************************************/
 
+/* ZERO exercises*/
+.zero__exercise{
+  padding: 10px;
+  font-size: 50px;
+  text-align: center;
+}
+
 /* main container */
 .train__data_container {
   /* background-image: url(../image/weights.jpg); */
@@ -223,6 +222,10 @@ TITLE IN POPUP WINDOW
   background-color: rgba(36, 38, 40, 0.9);
   width: 90%;
   margin: 20px auto;
+}
+
+.exercise__date_input {
+  margin: 0 auto;
 }
 
 /* .all__exercises {

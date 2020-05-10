@@ -18,9 +18,13 @@ let buttonController = (function () {
     /* event listeneres */
     buttonPop.addEventListener('click', function () {
         popUpWindow.style.display = "block";
+        document.getElementsByTagName("body")[0].style.overflowY = 'hidden';
+
     });
     buttonPopClose.addEventListener('click', function () {
         popUpWindow.style.display = "none";
+        document.getElementsByTagName("body")[0].style.overflowY = 'auto';
+
     })
 })();
 
@@ -407,8 +411,6 @@ let LScontroler = (function () {
         }
     }
 })();
-
-// document.querySelector('.exercise__date__new').insertAdjacentHTML('afterend', exercise);
 
 /********************************* */
 // MAIN CONTROLLER

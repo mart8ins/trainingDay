@@ -1,0 +1,340 @@
+/************************************
+POP UP WINDOWS BACKGROUND AND OPEN/CLOSE BUTTONS
+*************************************/
+
+
+/* Backgrounds popup logam*/
+#wednesday-pop {
+  background-color: rgba(23, 24, 25, 0.98);
+  background-image: url(../image/weights.jpg);
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+}
+
+
+/* button that opens popup window*/
+#train-progress-button-w {
+font-size: 17px;
+text-transform: uppercase;
+letter-spacing: 2px;
+padding: 5px;
+color: black;
+background-color: rgba(198, 191, 188, 1);
+font-weight: bold;
+width: 190px;
+text-align: center;
+position: absolute;
+left: 78%;
+top: 10px;
+border-radius: 3px;
+
+
+}
+#train-progress-button-w:hover {
+cursor: pointer;
+background-color: white;
+}
+
+/* POP UP WINDOW*/
+#wednesday-pop {
+position: fixed;
+display: none; /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! uzlikt un NONE*/
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+color: white;
+z-index: 2;
+animation: letSee 0.4s ease;
+overflow: auto;
+}
+
+@keyframes letSee {
+0% {opacity: 0;}
+100% {opacity: 1}
+}
+
+/* POP UP WINDOW CLOSE BUTTON */
+.wednesday-pop-close {
+position: absolute;
+width: 50px;
+right: 10px;
+top: 6px;
+font-size: 17px;
+font-weight: 400;
+padding: 5px;
+border-radius: 20%;
+outline: none;
+background: rgba(87, 123, 146, 1);
+color: white;
+cursor: pointer;
+box-shadow: 3px 3px 5px white;
+letter-spacing: 2px;
+}
+
+
+.wednesday-pop-close:hover {
+cursor: pointer;
+background: rgba(87, 123, 146, 0.5);
+box-shadow: 3px 3px 8px grey;
+}
+
+/* close button effect*/
+.wednesday-pop-close:active {
+transform: translateY(2px);
+}
+
+
+
+
+/**********************************************
+TITLE IN POPUP WINDOW
+***********************************************/
+.wednesday-pop-title {
+text-align: center;
+font-size: 25px;
+text-transform: uppercase;
+letter-spacing: 3px;
+padding: 10px;
+background-color: black;
+}
+
+
+/*********************************************
+FORM CONTAINER 
+*********************************************/
+.wednesdayForm form {
+background-color: rgba(36, 38, 40, 0.59);
+/* background-image: url(../image/lift1.jpg); */
+background-repeat: no-repeat;
+background-size: cover;
+
+position: relative;
+display: flex;
+}
+
+
+/***************************************
+exercise name and date input container 
+************************************  */
+.exercise__and__date {
+background-color: rgba(36, 138, 40, 0.2) ;
+padding: 30px;
+}
+.exercise__name__container {
+padding: 15px;
+}
+/* exercise name */
+.exercise__name__container select {
+font-size: 26px;
+width: 400px;
+padding: 10px;
+}
+
+/* exercise date*/
+#exercise__date__input {
+font-size: 25px;
+width: 300px;
+text-align: center;
+margin-left: 60px;
+}
+
+
+/*****************************************************
+exercise progress data - sets, weight, repetitions container
+*****************************************************/
+.progress__data {
+width: 45%;
+display: flex;
+justify-content: space-evenly;
+margin: 0 auto;
+text-align: center;
+}
+
+/* sets label */
+.formInput h3 {
+color: red;
+font-size: 25px;
+}
+
+.progress__data .formInput {
+margin: 0 auto;
+padding: 5px;
+}
+
+.progress__data .formInput input {
+width: 110px;
+font-size: 40px;
+text-align: center;
+}
+
+
+
+
+/*****************************************************
+submit button
+*****************************************************/
+.form_btn {
+width: 150px;
+margin: auto;
+margin-left: -50px;
+}
+.form_btn button {
+font-size: 35px;
+padding: 10px;
+letter-spacing: 4px;
+width: 100%;
+margin: 15px;
+cursor: pointer;
+background-color: rgba(47, 83, 153 ,0.5);
+border: none;
+border-radius: 5px;
+color: white;
+}
+
+.form_btn:hover button {
+background-color: rgba(47, 83, 153 ,1);
+}
+
+
+/*******************************************
+          train data results
+*******************************************/
+
+/* ZERO exercises*/
+.zero__exercise{
+padding: 10px;
+font-size: 50px;
+text-align: center;
+}
+
+/* main container */
+.train__data_container {
+/* background-image: url(../image/weights.jpg); */
+margin-top: 30px;
+background-size: cover;
+width: 100%;
+height: 100%;
+}
+
+.exercise__date__container {
+position: relative;
+background-color: rgba(36, 38, 40, 0.9);
+width: 90%;
+margin: 20px auto;
+}
+
+.exercise__date_input {
+margin: 0 auto;
+}
+
+/* .all__exercises {
+
+margin-bottom: 20px;
+height: 390px;
+overflow: auto;
+position: relative;
+} */
+
+.exercise__date__new {
+position: relative;
+width: 100%;
+font-size: 22px;
+padding: 5px;
+text-transform: uppercase;
+font-weight: bold;
+background-color: rgba(216, 131, 40 ,0.7);
+display: flex;
+}
+
+
+/* days date */
+.exercise__date__new div:nth-child(1) {
+width: 97%;
+}
+
+/* days remove btn*/
+.exercise__date__new div:nth-child(2) {
+width: 3%;
+font-size: 25px;
+cursor: pointer;
+color: rgba(216, 131, 40 ,0.4);
+}
+
+.exercise__date__new:hover div:nth-child(2) {
+width: 3%;
+font-size: 25px;
+color: rgba(216, 131, 40 ,1);
+transform: scale(1.1);
+}
+
+
+/* exercise*/
+.exercise__new{
+width: 250px;
+height: 320px;
+margin: 7px;
+margin-bottom: 45px;
+position: relative;
+display: inline-block;
+}
+
+
+
+/* container for title and days remove btn*/
+.title__remove__container {
+display: flex;
+width: 100%;
+font-size: 14px;
+}
+
+/* title */
+.title__remove__container div:nth-child(1) {
+width: 220px;
+padding: 5px;
+color: white;
+text-align: center;
+background-color: rgba(216, 131, 40 ,0.7);
+}
+/* remove btn */
+.title__remove__container div:nth-child(2) {
+width: 30px;
+padding: 5px;
+text-align: center;
+background-color: rgba(132, 126, 118, 0.7);
+cursor: pointer;
+}
+
+.title__remove__container:hover div:nth-child(2) {
+transform: scale(1.1);
+background-color: rgba(132, 126, 118, 0.1);
+}
+
+/* image container */
+.exercise__img{
+width: 100%;
+height: 50%;
+background-size: cover;
+}
+
+/* exercise progress data*/
+/* container*/
+.exercise__progres {
+height: 165px;
+display: grid;
+grid-template-columns: 50% 50%;
+/* grid-template-rows: 13% ;
+grid-auto-rows: auto; */
+grid-gap: 8px 3px;
+background-color: black;
+}
+
+/* grid items */
+.result__grid__item {
+padding-top: 5px;
+text-align: center;
+font-size: 14px;
+line-height: 12px;
+}
+
