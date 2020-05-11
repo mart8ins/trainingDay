@@ -36,126 +36,150 @@
 
     <!--  *********************************************       POPUP WINDOW -->
 
-    <!--Input forma -->
+
     <div id="monday-pop">
-      <button class="monday-pop-close" id="monday-close-event">Iziet</button>
+      <div class="monday-pop-title"><span class="exercise__day">Monday</span> training progress</div>
+
+
       <div class="mondayForm">
         <form action="">
           <!-- 
-            Veiktais vingrinājums
-          -->
-          <div class="formInput">
-            <select class='vingrinajumuIzvele'>
-              <option value="Front squats">Front squats</option>
-              <option value="Bench press">Bench press</option>
-              <option value="Cable front raise">Cable front raise</option>
-              <option value="Triceps row with rope">Triceps row with rope</option>
-              <option value="Hammer curl">Hammer curl</option>
-              <option value="Seated cable row">Seated cable row</option>
-              <option value="Stair mill">Stair mill</option>
-              <option value="Tread mill">Tread mill</option>
-            </select>
+          Veiktais vingrinājums
+        -->
+          <div class="exercise__and__date">
+
+            <div class="formInput exercise__name__container">
+              <select class="exercise__name">
+                <option value="Front squats">Front squats</option>
+                <option value="Bench press">Bench press</option>
+                <option value="Cable front raise">Cable front raise</option>
+                <option value="Triceps row with rope">Triceps row with rope</option>
+                <option value="Hammer curl">Hammer curl</option>
+                <option value="Seated cable row">Seated cable row</option>
+                <option value="Stair mill">Stair mill</option>
+                <option value="Tread mill">Tread mill</option>
+              </select>
+            </div>
+
+            <!--
+          Veiktā vingrinājuma input datums
+        -->
+            <!-- <label for="exercise__date__input">Date</label> -->
+            <input type="date" id="exercise__date__input">
+            <br>
+
           </div>
 
-          <!--
-            Set labels
-          -->
-          <div class="formInput setLabel">
-            <label for="repet" class='set-0'>Set 1:</label>
-            <br>
-            <label for="repet" class='set-1'>Set 2:</label>
-            <br>
-            <label for="repet" class='set-3'>Set 3:</label>
-            <br>
-            <label for="repet" class='set-4'>Set 4:</label>
+
+          <div class="progress__data">
+            <div class="formInput">
+              <h3 class="set1">Set 1</h3><br>
+              <label for="weight-1">Weight</label><br>
+              <input type="number" id="weight-1"><br>
+              <label for="rep-1">Repetitions</label><br>
+              <input type="number" id="rep-1">
+            </div>
+
+            <div class="formInput">
+              <h3 class="set2">Set 2</h3><br>
+              <label for="weight-2">Weight</label><br>
+              <input type="number" id="weight-2"><br>
+              <label for="rep-2">Repetitions</label><br>
+              <input type="number" id="rep-2">
+            </div>
+
+            <div class="formInput">
+              <h3 class="set3">Set 3</h3><br>
+              <label for="weight-3">Weight</label><br>
+              <input type="number" id="weight-3"><br>
+              <label for="rep-3">Repetitions</label><br>
+              <input type="number" id="rep-3">
+            </div>
+
+            <div class="formInput">
+              <h3 class="set4">Set 4</h3><br>
+              <label for="weight-4">Weight</label><br>
+              <input type="number" id="weight-4"><br>
+              <label for="rep-4">Repetitions</label><br>
+              <input type="number" id="rep-4">
+            </div>
           </div>
 
-          <!--
-            Svars
-          -->
 
-          <div class="formInput">
-            <!--<label for="repet">Set 1:</label>-->
-            <label for="svars-0">Svars</label>
-            <input type="number" class="svars-0">
-            <br>
-            <label for="svars-1">Svars</label>
-            <input type="number" class="svars-1">
-            <br>
-            <label for="svars-2">Svars</label>
-            <input type="number" class="svars-2">
-            <br>
-            <label for="svars-3">Svars</label>
-            <input type="number" class="svars-3">
+          <div class="form_btn">
+            <button type="submit" id="form__submit">Submit</button>
           </div>
-
-          <!--
-            Atkārtojumu skaits konkrētajā piegājienā
-          -->
-          <div class="formInput">
-            <!--<label for="repet">Set 1:</label>-->
-            <label for="rep-0">atkārtojumi</label>
-            <input type="number" class="rep-0">
-            <br>
-            <label for="rep-1">atkārtojumi</label>
-            <input type="number" class="rep-1">
-            <br>
-            <label for="rep-2">atkārtojumi</label>
-            <input type="number" class="rep-2">
-            <br>
-            <label for="rep-3">atkārtojumi</label>
-            <input type="number" class="rep-3">
-          </div>
-
-          <!--
-            Veiktā vingrinājuma datums
-          -->
-          <div class="formInput datumsVingrinajumam">
-            <label for="vingrinajumaDatums">Datums</label>
-            <input type="date" id="vingrinajumaDatums">
-            <br>
-          </div>
-
         </form>
       </div>
 
-      <div>
-        <button type="submit" class="formPoga">Submit</button>
-      </div>
+      <!--
+          rezultāti
+        -->
+      <div class="train__data__container">
 
 
-
-
-      <div class="days__container">
-        <!--
-        <div id="day__wrapper">
-          <div class="new__date">Datums 05.03.2020</div>
-          <div class='vingrinajums__new'>
-            <div class="vingrinajuma__box">
-
-              <div class="title-and-remove">
-                <h4>Bench press</h4>
-                <p class="remove-exercise">X</p>
-              </div>
-
-              <img src="../image/monday/benchpress.jpg" alt="">
-              <div class="result__grid">
-                <div class="result__grid_item kg">20kg</div>
-                <div class="result__grid_item rep">10</div>
-                <div class="result__grid_item kg">30kg</div>
-                <div class="result__grid_item rep">8</div>
-                <div class="result__grid_item kg">40kg</div>
-                <div class="result__grid_item rep">6</div>
-                <div class="result__grid_item kg">50kg</div>
-                <div class="result__grid_item rep">4</div>
-              </div>
-            </div>
+        <!-- **************************************** exercise DAY ********************************************* -->
+        <div class="exercise__date__container" id="2020-05-18">
+          <div class="exercise__date__new">
+            <div class=exercise__date__value>Ievadiet treniņa datumu</div>
+            <!-- <div class="exercise__date__remove">X</div> -->
           </div>
-        </div>
--->
-      </div>
 
+          <div class="zero__exercise">
+            Ievadiet kādu no vingrinājumiem!
+          </div>
+
+          <!-- **************************************** exercise 1 *********************************************-->
+          <!-- <div class="exercise__new" id='1'>
+          <div class="title__remove__container">
+            <div class="exercise__title__data">Bench press</div>
+            <div class="exercise__remove">X</div>
+          </div>
+          <div class="exercise__img" style="background-image: url(../image/monday/benchpress.jpg)"></div>
+          <div class="exercise__progres">
+            <div class="result__grid__item">Weight</div>
+            <div class="result__grid__item">Repetitions</div>
+            <div class="result__grid__item kg">20 kg</div>
+            <div class="result__grid__item rep">10</div>
+            <div class="result__grid__item kg">30 kg</div>
+            <div class="result__grid__item rep">8</div>
+            <div class="result__grid__item kg">40 kg</div>
+            <div class="result__grid__item rep">6</div>
+            <div class="result__grid__item kg">50 kg</div>
+            <div class="result__grid__item rep">4</div>
+          </div>
+        </div> -->
+
+
+          <!-- **************************************** exercise 2 *********************************************-->
+          <!-- <div class="exercise__new" style="border: 1px solid red" id='1'>
+          <div class="title__remove__container">
+            <div class="exercise__title__data">Bench press</div>
+            <div class="exercise__remove">X</div>
+          </div>
+          <div class="exercise__img" style="background-image: url(../image/monday/benchpress.jpg)"></div>
+          <div class="exercise__progres">
+            <div class="result__grid__item">Weight</div>
+            <div class="result__grid__item">Repetitions</div>
+            <div class="result__grid__item kg">20 kg</div>
+            <div class="result__grid__item rep">10</div>
+            <div class="result__grid__item kg">30 kg</div>
+            <div class="result__grid__item rep">8</div>
+            <div class="result__grid__item kg">40 kg</div>
+            <div class="result__grid__item rep">6</div>
+            <div class="result__grid__item kg">50 kg</div>
+            <div class="result__grid__item rep">4</div>
+          </div>
+        </div>-->
+
+        </div>
+
+
+      </div>
+      <button class="monday-pop-close" id="monday-close-event">X</button>
     </div>
+
+
 
 
 
